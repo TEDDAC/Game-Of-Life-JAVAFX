@@ -1,0 +1,6 @@
+On utilise ce fichier pour dire ce qu'on a fait et poser des questions
+
+
+Est-ce qu'on créerais pas une grille initialisé de base avec plein de celulle, qu'on viendrais faire naitre après ? Comme ça on aura même pas besoin de se préocupper de la taille du tableau si ça grandit, comme sur le site, et le zoom sera juste géré dans la vue (et on avait dit qu'on ferais avec alive et non avec des cellules instancié ou null pour savoir si elle étaient en vie).
+
+
