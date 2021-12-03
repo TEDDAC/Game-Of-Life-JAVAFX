@@ -19,23 +19,18 @@ public class Jeu {
         this.celluleEnVie = celluleEnVie;
         this.traité = traité;
     }
-    public String ActualiserCellules(int x,int y)//permet de récupérer et donc d'actualiser les voisines d'une cellule
+    public String setCellules(int x,int y)//permet de données à une cellule ces voisines qu'elle gardera en mémoire et que le jeu récupèrera après
     {
         if(Grille[x][y] == null)
         {
-            return "Impossible d'actualliser les cellules voisines,la cellule est null";
+            return "Impossible de récuperer les cellules voisines,la cellule est null";
         }
-        Grille[x][y].getCelluesVoisines().clear();
-        Grille[x][y].getCelluesVoisines().add(Grille[x][y]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x-1][y-1]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x-1][y]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x-1][y+1]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x][y-1]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x][y]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x][y+1]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x+1][y-1]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x+1][y]);
-        Grille[x][y].getCelluesVoisines().add(Grille[x+1][y+1]);
+        Grille[x][y].getCellulesVoisines().clear();
+        for(int i=x-1;i<=x+1;i++){
+            for(int j=x-1;i<=x+1;i++){
+                Grille[y][x].getCellulesVoisines().add(Grille[j][i]); //Grille[Ligne][Colonne], donc on doit inverse
+            }
+        }
         return "";
     }
 

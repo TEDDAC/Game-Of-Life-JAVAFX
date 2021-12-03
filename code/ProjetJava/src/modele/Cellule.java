@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Cellule {
     private int NextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
     private boolean Alive;
-    private ArrayList<Cellule> celluesVoisines;
+    private ArrayList<Cellule> cellulesVoisines;
 
-
-
-    public Cellule(int nextTimeStatus, boolean alive, ArrayList<Cellule> celluesVoisines) {
-        NextTimeStatus = nextTimeStatus;
-        Alive = alive;
-        this.celluesVoisines = celluesVoisines;
+    public Cellule() { //on initialise toutes les cellules en créant la grille
+        NextTimeStatus = 0;
+        Alive = false;
+        this.cellulesVoisines = new ArrayList<Cellule>();
     }
 
 
@@ -33,12 +31,12 @@ public class Cellule {
         Alive = alive;
     }
 
-    public ArrayList<Cellule> getCelluesVoisines() {
-        return celluesVoisines;
+    public ArrayList<Cellule> getCellulesVoisines() {
+        return cellulesVoisines;
     }
 
-    public void setCelluesVoisines(ArrayList<Cellule> celluesVoisines) {
-        this.celluesVoisines = celluesVoisines;
+    public void setCellulesVoisines(ArrayList<Cellule> cellulesVoisines) {
+        this.cellulesVoisines = cellulesVoisines;
     }
 
 
