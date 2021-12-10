@@ -6,50 +6,58 @@ public class Jeu {
     private int tailleX;
     private int tailleY;
 
-    private Cellule Grille[][];
+    private Cellule[][] grille;
     private ArrayList<Cellule> celluleEnVie;
-    private ArrayList<Cellule> traité;
+    private ArrayList<Cellule> traite;
+
+    private Rules rules;
 
 
-
-    public Jeu(int tailleX, int tailleY, Cellule[][] grille, ArrayList<Cellule> celluleEnVie, ArrayList<Cellule> traité) {
+    public Jeu(int tailleX, int tailleY) {
         this.tailleX = tailleX;
         this.tailleY = tailleY;
-        Grille = grille;
-        this.celluleEnVie = celluleEnVie;
-        this.traité = traité;
+        grille = new Cellule[tailleY][tailleX];
+        this.celluleEnVie = new ArrayList<>();
+        this.traite = new ArrayList<>();
     }
-    public String setCellules(int x,int y)//permet de données à une cellule ces voisines qu'elle gardera en mémoire et que le jeu récupèrera après
+    public void setCellules(int x,int y)//permet de données à une cellule ces voisines qu'elle gardera en mémoire et que le jeu récupèrera après
     {
-        if(Grille[x][y] == null)
+        if(grille[y][x] == null)
         {
-            return "Impossible de récuperer les cellules voisines,la cellule est null";
+            //exception return "Impossible de récuperer les cellules voisines,la cellule est null";
         }
-        Grille[x][y].getCellulesVoisines().clear();
-        for(int i=x-1;i<=x+1;i++){
-            for(int j=x-1;i<=x+1;i++){
-                Grille[y][x].getCellulesVoisines().add(Grille[j][i]); //Grille[Ligne][Colonne], donc on doit inverse
-            }
-        }
-        return "";
+        this.giveVoisine(x,y);
     }
 
-    public String AjoutCellule(int x, int y, Cellule cell){//permet de faire vivre une cellule
-        if(Grille[x][y] != null){
-            return "Impossible d'ajouter,une cellule est déja à cet emplacement";
+    public void AjoutCellule(int x, int y, Cellule cell){//permet de faire vivre une cellule
+        if(grille[x][y] != null){
+            //exception
         }
         if(cell == null){
-            return "Impossible d'ajouter,la cellule est null";
+            //exception
         }
-        Grille[x][y]=cell;
-        return "";
+        grille[x][y]=cell;
     }
-    public String SupprimerCellule(int x, int y){//permet de tuer une cellule
-        if(Grille[x][y] != null){
-            return "Impossible de supprimer,l'emplacement est déja null";
+    public void SupprimerCellule(int x, int y){//permet de tuer une cellule
+        if(grille[x][y] != null){
+            //exception "Impossible de supprimer,l'emplacement est déja null";
         }
-        Grille[x][y]=null;
-        return "";
+        grille[x][y]=null;
+    }
+
+    public void giveVoisine(int x, int y){
+        ArrayList<Cellule> voisines = grille[y][x].getCellulesVoisines();
+        voisines.clear();
+        for(int i=x-1;i<=x+1;i++){
+            if(i < 0) i = 0;
+            if(i > tailleX) i = tailleX;
+            for(int j=y-1;j<=y+1;j++){
+                if(j < 0) j = 0;
+                if(j > tailleY) i = tailleY;
+                if(j != y && i!= x)
+                    voisines.add(grille[j][i]); //Grille[Ligne][Colonne], donc on doit inverse x et y
+            }
+        }
     }
 
 
@@ -72,11 +80,11 @@ public class Jeu {
     }
 
     public Cellule[][] getGrille() {
-        return Grille;
+        return grille;
     }
 
     public void setGrille(Cellule[][] grille) {
-        Grille = grille;
+        this.grille = grille;
     }
 
     public ArrayList<Cellule> getCelluleEnVie() {
@@ -87,11 +95,19 @@ public class Jeu {
         this.celluleEnVie = celluleEnVie;
     }
 
-    public ArrayList<Cellule> getTraité() {
-        return traité;
+    public ArrayList<Cellule> getTraite() {
+        return traite;
     }
 
-    public void setTraité(ArrayList<Cellule> traité) {
-        this.traité = traité;
+    public void setTraite(ArrayList<Cellule> traite) {
+        this.traite = traite;
+    }
+
+    public Rules getRules() {
+        return rules;
+    }
+
+    public void setRules(Rules rules) {
+        this.rules = rules;
     }
 }

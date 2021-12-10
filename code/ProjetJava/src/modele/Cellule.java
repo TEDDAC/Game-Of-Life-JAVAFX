@@ -3,32 +3,32 @@ package modele;
 import java.util.ArrayList;
 
 public class Cellule {
-    private int NextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
-    private boolean Alive;
+    private int nextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
+    private boolean alive;
     private ArrayList<Cellule> cellulesVoisines;
 
-    public Cellule() { //on initialise toutes les cellules en créant la grille
-        NextTimeStatus = 0;
-        Alive = false;
-        this.cellulesVoisines = new ArrayList<Cellule>();
+    public Cellule(ArrayList<Cellule> voisines) { //on initialise toutes les cellules en créant la grille
+        nextTimeStatus = 0;
+        alive = false;
+        this.cellulesVoisines = voisines;
     }
 
 
 
     public int getNextTimeStatus() {
-        return NextTimeStatus;
+        return nextTimeStatus;
     }
 
     public void setNextTimeStatus(int nextTimeStatus) {
-        NextTimeStatus = nextTimeStatus;
+        nextTimeStatus = nextTimeStatus;
     }
 
     public boolean isAlive() {
-        return Alive;
+        return alive;
     }
 
     public void setAlive(boolean alive) {
-        Alive = alive;
+        alive = alive;
     }
 
     public ArrayList<Cellule> getCellulesVoisines() {
@@ -40,4 +40,28 @@ public class Cellule {
     }
 
 
+    public int getNbVoisinesVivante(){
+        return 2;
+    }
+
+    public void evolve(Rules rules)
+    {
+        int nbVoisinesVivantes = getNbVoisinesVivante();
+        Boolean[] survivedRules = rules.getSurviveRules();
+        Boolean[] bornRules = rules.getBornRules();
+        if(isAlive()){
+            if(survivedRules[nbVoisinesVivantes] == true)
+                this.nextTimeStatus = 0;
+            else this.nextTimeStatus = -1;
+        } else {
+            if(bornRules[nbVoisinesVivantes] == true)
+                this.nextTimeStatus = 1;
+            else this.nextTimeStatus = 0;
+        }
+    }
+
+    public void update(){
+        if(nextTimeStatus == 1) alive = true;
+        if(nextTimeStatus == -1) alive = false;
+    }
 }
