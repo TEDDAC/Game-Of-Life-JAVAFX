@@ -7,3 +7,8 @@ j'ai aussi remplacer la récupération des voisines par une boucle
 
 Est-ce qu'on créerais pas une grille initialisé de base avec plein de celulle, qu'on viendrais faire naitre après ? Comme ça on aura même pas besoin de se préocupper de la taille du tableau si ça grandit, comme sur le site, et le zoom sera juste géré dans la vue
 
+
+[Arthur 10/12]
+J'ai creer les deux nouvelles classes qu'on avait fait lors du td (main et rules)
+J'ai traduit en java les méthodes qu'on avait fait en TD(evolution, updateCells dans main update,evolve dans cellule)
+J'ai pas réussi à faire la fonction resizeGrid() j'ai oublié comment on voulais si prendre.
