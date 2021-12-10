@@ -14,3 +14,6 @@ J'ai traduit en java les méthodes qu'on avait fait en TD(evolution, updateCells
 J'ai pas réussi à faire la fonction resizeGrid() j'ai oublié comment on voulais si prendre.
 
 [Mathis 10/12]
+j'ai programmé les fonctions qu'on avait écrit en TD.
+Tu n'avais pas commit le code, il n'y avait que ce fichiers et le readme
+dans jeu, j'ai rajouter faireNaitre et tuer, car on doit mettre à jour alive mais aussi insérer ou enlever la cellule de celluleEnVie.

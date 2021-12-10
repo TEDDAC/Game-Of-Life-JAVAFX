@@ -376,7 +376,7 @@
 									"font": "Arial;13;0",
 									"left": 595.5,
 									"top": 307,
-									"width": 170,
+									"width": 171.07177734375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dU//OWkOB8I="
@@ -774,7 +774,7 @@
 									"font": "Arial;13;0",
 									"left": 936.5,
 									"top": 355,
-									"width": 195,
+									"width": 195.6435546875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dVGEWmlu/54="
@@ -3194,7 +3194,7 @@
 											"top": 127,
 											"width": 282.19140625,
 											"height": 13,
-											"text": "Jeu"
+											"text": "Monde"
 										},
 										{
 											"_type": "LabelView",
@@ -5520,7 +5520,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9dZtLMXs1pSA="
 							},
-							"name": "Jeu",
+							"name": "Monde",
 							"ownedElements": [
 								{
 									"_type": "UMLAssociation",

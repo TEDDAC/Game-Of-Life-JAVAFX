@@ -60,6 +60,16 @@ public class Jeu {
         }
     }
 
+    public void faireNaitre(int x,int y){
+        grille[y][x].setAlive(true);
+        traite.add(grille[y][x]);
+    }
+
+    public void tuer(int x,int y){
+        grille[y][x].setAlive(false);
+        traite.remove(grille[y][x]);
+    }
+
 
 
 
