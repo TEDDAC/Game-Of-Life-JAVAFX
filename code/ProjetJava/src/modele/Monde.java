@@ -2,7 +2,7 @@ package modele;
 
 import java.util.ArrayList;
 
-public class Jeu {
+public class Monde {
     private int tailleX;
     private int tailleY;
 
@@ -13,7 +13,7 @@ public class Jeu {
     private Rules rules;
 
 
-    public Jeu(int tailleX, int tailleY) {
+    public Monde(int tailleX, int tailleY) {
         this.tailleX = tailleX;
         this.tailleY = tailleY;
         grille = new Cellule[tailleY][tailleX];
@@ -27,22 +27,6 @@ public class Jeu {
             //exception return "Impossible de récuperer les cellules voisines,la cellule est null";
         }
         this.giveVoisine(x,y);
-    }
-
-    public void AjoutCellule(int x, int y, Cellule cell){//permet de faire vivre une cellule
-        if(grille[x][y] != null){
-            //exception
-        }
-        if(cell == null){
-            //exception
-        }
-        grille[x][y]=cell;
-    }
-    public void SupprimerCellule(int x, int y){//permet de tuer une cellule
-        if(grille[x][y] != null){
-            //exception "Impossible de supprimer,l'emplacement est déja null";
-        }
-        grille[x][y]=null;
     }
 
     public void giveVoisine(int x, int y){

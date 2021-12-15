@@ -1,5 +1,6 @@
 package modele;
 
+
 import java.util.ArrayList;
 
 public class Cellule {
@@ -47,14 +48,14 @@ public class Cellule {
     public void evolve(Rules rules)
     {
         int nbVoisinesVivantes = getNbVoisinesVivante();
-        Boolean[] survivedRules = rules.getSurviveRules();
-        Boolean[] bornRules = rules.getBornRules();
+        boolean[] survivedRules = rules.getSurviveRules();
+        boolean[] bornRules = rules.getBornRules();
         if(isAlive()){
-            if(survivedRules[nbVoisinesVivantes] == true)
+            if(survivedRules[nbVoisinesVivantes])
                 this.nextTimeStatus = 0;
             else this.nextTimeStatus = -1;
         } else {
-            if(bornRules[nbVoisinesVivantes] == true)
+            if(bornRules[nbVoisinesVivantes])
                 this.nextTimeStatus = 1;
             else this.nextTimeStatus = 0;
         }

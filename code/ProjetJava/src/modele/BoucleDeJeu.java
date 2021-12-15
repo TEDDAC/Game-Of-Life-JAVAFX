@@ -2,26 +2,26 @@ package modele;
 
 import java.util.ArrayList;
 
-public class Main {
-    private Jeu jeu;
+public class BoucleDeJeu {
+    private Monde monde;
 
-    public Main(){
-        jeu = new Jeu(100,100);
+    public BoucleDeJeu(){
+        monde = new Monde(100,100);
     }
 
-    public Jeu getJeu() {
-        return jeu;
+    public Monde getMonde() {
+        return monde;
     }
 
-    public void setJeu(Jeu jeu) {
-        this.jeu = jeu;
+    public void setMonde(Monde monde) {
+        this.monde = monde;
     }
 
 
     public void evolution(){
-        Rules rules = this.jeu.getRules();
-        ArrayList<Cellule> cellulesEnVie = this.jeu.getCelluleEnVie();
-        ArrayList<Cellule> traite = this.jeu.getTraite();
+        Rules rules = this.monde.getRules();
+        ArrayList<Cellule> cellulesEnVie = this.monde.getCelluleEnVie();
+        ArrayList<Cellule> traite = this.monde.getTraite();
 
         for (Cellule cellule : cellulesEnVie){
             if(!traite.contains(cellule)){
@@ -31,7 +31,7 @@ public class Main {
                     return;
                 for (Cellule voisine : cellule.getCellulesVoisines()){
                     if(!traite.contains(voisine)){
-                        voisine.evolve();
+                        voisine.evolve(rules);
                         traite.add(voisine);
                     }
                 }
@@ -40,9 +40,9 @@ public class Main {
     }
 
     public void updateCells(){
-        for (Cellule cellule : jeu.getTraite()){
+        for (Cellule cellule : monde.getTraite()){
             cellule.update();
-            jeu.getTraite().remove(cellule);
+            monde.getTraite().remove(cellule);
         }
     }
 }

@@ -2,27 +2,27 @@ package modele;
 
 public class Rules {
 
-    private Boolean[] bornRules;
-    private Boolean[] surviveRules;
+    private boolean[] bornRules;
+    private boolean[] surviveRules;
 
-    public Rules(Boolean[] bornRules, Boolean[] surviveRules){
+    public Rules(boolean[] bornRules, boolean[] surviveRules){
         this.bornRules = bornRules;
         this.surviveRules = surviveRules;
     }
 
-    public Boolean[] getBornRules() {
+    public boolean[] getBornRules() {
         return bornRules;
     }
 
-    public void setBornRules(Boolean[] bornRules) {
+    public void setBornRules(boolean[] bornRules) {
         this.bornRules = bornRules;
     }
 
-    public Boolean[] getSurviveRules() {
+    public boolean[] getSurviveRules() {
         return surviveRules;
     }
 
-    public void setSurviveRules(Boolean[] surviveRules) {
+    public void setSurviveRules(boolean[] surviveRules) {
         this.bornRules = surviveRules;
     }
 }
