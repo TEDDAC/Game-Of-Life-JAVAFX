@@ -20,3 +20,9 @@ dans jeu, j'ai rajouter faireNaitre et tuer, car on doit mettre à jour alive ma
 
 [Arthur 17/12]
 J'ai creé la classe test, j'ai fais un affichage du monde, un générateur de monde, y'avait pas mal d'erreurs j'ai corrigé le bazar.
+
+[Mathis 17/12]
+Attention sur la grille: le premier indice est pour les lignes (Y) et le suivant pour les colonnes (X)
+J'ai déplacé la class test dans un package test, j'ai vu qu'il y avait des .class un peu partout, je l'ai ai supprimé, et il seront désormais ignorés par GIT
+Monsieur Bouhours n'aime pas, il trouve que les cellules ont trop de responsabilité et que ça complexifie beaucoup trop. On doit avoir une class Dieu qui s'occupe de faire évoluer les cellules.
+Y'a un problème avec giveVoisines. Mais on va l'enlever, et on va tous refaire avec une class Dieu

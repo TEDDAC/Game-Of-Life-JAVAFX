@@ -33,35 +33,38 @@ public class Monde {
     public void giveVoisine(int x, int y){
         ArrayList<Cellule> voisines = grille[y][x].getCellulesVoisines();
         voisines.clear();
+        System.out.println("Pour la cellule: "+x+","+y);
         for(int i=x-1;i<=x+1;i++){
             if(i < 0) i = 0;
-            if(i > tailleX) i = tailleX;
+            if(i >= tailleX) i = tailleX-1;
             for(int j=y-1;j<=y+1;j++){
                 if(j < 0) j = 0;
-                if(j > tailleY) i = tailleY;
-                if(j != y && i!= x)
+                if(j >= tailleY) j = tailleY-1;
+                if(j != y && i!= x) {
                     voisines.add(grille[j][i]); //Grille[Ligne][Colonne], donc on doit inverse x et y
+                    System.out.println(i+","+j);
+                }
             }
         }
     }
 
     public void faireNaitre(int x,int y){
-        grille[x][y].setAlive(true);
-        traite.add(grille[y][x]);
+        grille[y][x].setAlive(true);
+        celluleEnVie.add(grille[y][x]); //celluleEnVie, pas traité, traité ne sert que pour l'évolution et l'updateCells
     }
 
     public void tuer(int x,int y){
         grille[y][x].setAlive(false);
-        traite.remove(grille[y][x]);
+        celluleEnVie.remove(grille[y][x]);
     }
 
     public void afficher(){
         String ligne = "";
-        for (int i = 0; i < tailleX; i++) {
+        for (int i = 0; i < tailleY; i++) { //Y pour les colonnes
             System.out.println(ligne);
 
             ligne = "";
-            for (int j = 0; j < tailleY; j++) {
+            for (int j = 0; j < tailleX; j++) { //X pour les lignes
 
                 if(grille[i][j].isAlive())
                     ligne=ligne.concat("X");
