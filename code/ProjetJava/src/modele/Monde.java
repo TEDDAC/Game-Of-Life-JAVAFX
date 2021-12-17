@@ -29,6 +29,7 @@ public class Monde {
         this.giveVoisine(x,y);
     }
 
+
     public void giveVoisine(int x, int y){
         ArrayList<Cellule> voisines = grille[y][x].getCellulesVoisines();
         voisines.clear();
@@ -45,7 +46,7 @@ public class Monde {
     }
 
     public void faireNaitre(int x,int y){
-        grille[y][x].setAlive(true);
+        grille[x][y].setAlive(true);
         traite.add(grille[y][x]);
     }
 
@@ -54,9 +55,29 @@ public class Monde {
         traite.remove(grille[y][x]);
     }
 
+    public void afficher(){
+        String ligne = "";
+        for (int i = 0; i < tailleX; i++) {
+            System.out.println(ligne);
 
+            ligne = "";
+            for (int j = 0; j < tailleY; j++) {
 
-
+                if(grille[i][j].isAlive())
+                    ligne=ligne.concat("X");
+                else{
+                    ligne=ligne.concat("#");
+                }
+            }
+        }
+    }
+    public void generer(){
+        for (int i = 0; i < tailleX; i++) {
+            for (int j = 0; j < tailleY; j++) {
+                grille[i][j]=new Cellule(new ArrayList<Cellule>());
+            }
+        }
+    }
     public int getTailleX() {
         return tailleX;
     }

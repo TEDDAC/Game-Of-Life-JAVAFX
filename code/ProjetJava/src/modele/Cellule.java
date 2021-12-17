@@ -15,7 +15,6 @@ public class Cellule {
     }
 
 
-
     public int getNextTimeStatus() {
         return nextTimeStatus;
     }
@@ -29,7 +28,7 @@ public class Cellule {
     }
 
     public void setAlive(boolean alive) {
-        alive = alive;
+        this.alive = alive;
     }
 
     public ArrayList<Cellule> getCellulesVoisines() {

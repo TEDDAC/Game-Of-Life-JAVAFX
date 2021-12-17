@@ -17,3 +17,6 @@ J'ai pas réussi à faire la fonction resizeGrid() j'ai oublié comment on voula
 j'ai programmé les fonctions qu'on avait écrit en TD.
 Tu n'avais pas commit le code, il n'y avait que ce fichiers et le readme
 dans jeu, j'ai rajouter faireNaitre et tuer, car on doit mettre à jour alive mais aussi insérer ou enlever la cellule de celluleEnVie.
+
+[Arthur 17/12]
+J'ai creé la classe test, j'ai fais un affichage du monde, un générateur de monde, y'avait pas mal d'erreurs j'ai corrigé le bazar.

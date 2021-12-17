@@ -5441,6 +5441,19 @@
 							"width": 97.314453125,
 							"height": 70,
 							"text": "run():\nevolution()\nupdateCells()\nsleep(freq)"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF9x3T2VZVI/Ho=",
+							"_parent": {
+								"$ref": "AAAAAAF9dVq24W3Jk0U="
+							},
+							"font": "Arial;13;0",
+							"left": 88,
+							"top": 184,
+							"width": 72.76806640625,
+							"height": 144,
+							"text": "La boucle de jeu ne doit faire que beep, les autres écoute le  beep\nA revoir"
 						}
 					]
 				},
