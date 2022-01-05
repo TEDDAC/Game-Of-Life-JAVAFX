@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        Monde monde = new Monde(20,20);
+        Monde monde = new Monde(10,10);
         boolean born[] = new boolean[9];
         boolean survive[] = new boolean[9];
         born[3]=true;
@@ -24,5 +24,10 @@ public class Test {
         System.out.println("\n");
         //dieu.tuer(2,1);
         //dieu.afficher();
+        for(int x=0;x<10;x++){
+            dieu.evolution();
+            dieu.updateCells();
+            dieu.afficher();
+        }
     }
 }

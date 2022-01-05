@@ -8,7 +8,7 @@ public class Monde {
 
     private Cellule[][] grille;
     private ArrayList<Cellule> celluleEnVie;
-    private ArrayList<Cellule> traite;
+
 
 
     public Monde(int tailleX, int tailleY) {
@@ -16,14 +16,13 @@ public class Monde {
         this.tailleY = tailleY;
         grille = new Cellule[tailleY][tailleX];
         this.celluleEnVie = new ArrayList<>();
-        this.traite = new ArrayList<>();
         generer();
     }
 
     public void generer(){
         for (int i = 0; i < tailleX; i++) {
             for (int j = 0; j < tailleY; j++) {
-                grille[i][j]=new Cellule();
+                grille[j][i]=new Cellule(j,i);
             }
         }
     }
@@ -59,11 +58,5 @@ public class Monde {
         this.celluleEnVie = celluleEnVie;
     }
 
-    public ArrayList<Cellule> getTraite() {
-        return traite;
-    }
 
-    public void setTraite(ArrayList<Cellule> traite) {
-        this.traite = traite;
-    }
 }

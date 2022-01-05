@@ -39,10 +39,10 @@ public class BoucleDeJeu {
         }
     }*/
 
-    public void updateCells(){
+    /*public void updateCells(){
         for (Cellule cellule : monde.getTraite()){
             cellule.update();
             monde.getTraite().remove(cellule);
         }
-    }
+    }*/
 }
