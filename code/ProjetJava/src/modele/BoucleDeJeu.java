@@ -18,7 +18,7 @@ public class BoucleDeJeu {
     }
 
 
-    public void evolution(){
+    /*public void evolution(){
         Rules rules = this.monde.getRules();
         ArrayList<Cellule> cellulesEnVie = this.monde.getCelluleEnVie();
         ArrayList<Cellule> traite = this.monde.getTraite();
@@ -37,7 +37,7 @@ public class BoucleDeJeu {
                 }
             }
         }
-    }
+    }*/
 
     public void updateCells(){
         for (Cellule cellule : monde.getTraite()){

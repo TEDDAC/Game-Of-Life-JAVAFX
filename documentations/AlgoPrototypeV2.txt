@@ -1,12 +1,13 @@
 Dieu.evolution() //celluleEnVie doit être un tableau de coordonnée
 CelluleEnVie = monde.getCelluleEnVie();
-for(i=0;i<CelluleEnVie.length();i++)
-	for(j=0;j<CelluleEnVie.length();j++)
-		for(x=i-1;x<=i-1;x++)
-			for(y=j-1;y<=j-1;y++)
-				if(!in(traite)
-					evolveCell(x,y);
-					traite.add([x,y]);
+foreach(CelluleEnVie.length())
+	i = cell.getx();
+	j = cell.gety();
+	for(x=i-1;x<=i-1;x++)
+		for(y=j-1;y<=j-1;y++)
+			if(!in(traite)
+				evolveCell(x,y);
+				traite.add([x,y]);
 
 Dieu.evolveCell(int x,int y)
 	bornRules = rules.getBornRules();
