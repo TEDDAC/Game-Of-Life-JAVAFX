@@ -106,7 +106,7 @@ public class Dieu {
         while(it.hasNext()){
             cellule = it.next();
             cellule.update();
-            traite.remove(cellule);
+            it.remove();
         }
     }
 
