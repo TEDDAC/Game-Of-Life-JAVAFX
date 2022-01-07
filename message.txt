@@ -26,3 +26,6 @@ Attention sur la grille: le premier indice est pour les lignes (Y) et le suivant
 J'ai déplacé la class test dans un package test, j'ai vu qu'il y avait des .class un peu partout, je l'ai ai supprimé, et il seront désormais ignorés par GIT
 Monsieur Bouhours n'aime pas, il trouve que les cellules ont trop de responsabilité et que ça complexifie beaucoup trop. On doit avoir une class Dieu qui s'occupe de faire évoluer les cellules.
 Y'a un problème avec giveVoisines. Mais on va l'enlever, et on va tous refaire avec une class Dieu
+
+[Arthur 7/01]
+J'ai refais getVoisinse mais c'est pas concluant je comprend trop pourquoi ...

@@ -46,27 +46,44 @@ public class Dieu {
             }
         }
     }
+    public ArrayList<Cellule> potentielsCellules(ArrayList<Cellule> celluleEnVie) {
+    ArrayList<Cellule> potentielsCellules = new ArrayList<Cellule>();
+    int i , j;
+        for (Cellule celluleVivante : celluleEnVie) {
+            i=celluleVivante.getX();
+            j=celluleVivante.getY();
+            for (int x = i - 1; x <= i + 1; x++) {
+                for (int y = j - 1; y <= j + 1; y++) {
+                    if (x > 0 && x < monde.getTailleX() && y > 0 && y < monde.getTailleY()) {
+                        Cellule current = monde.getGrille()[y][x];
+                        if (!potentielsCellules.contains(current)) {
+                            potentielsCellules.add(current);
+                        }
+                    }
+                }
+            }
+        }
+        return potentielsCellules;
+    }
+
+
     public void evolution(){
         int i;
         int j;
         int x;
         int y;
         ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
+        ArrayList<Cellule> cellulesPotentiels = potentielsCellules(celluleEnVie);
 
-        for (Cellule cell : celluleEnVie)
+
+        for (Cellule cell : cellulesPotentiels)
         {
             i=cell.getX();
             j=cell.getY();
-            for(x=i-1;x<=i-1;x++){
-                for(y=j-1;y<=j-1;y++){
-                    if(x>0 && x< monde.getTailleX() && y>0 && y< monde.getTailleY()) {
-                        Cellule current = monde.getGrille()[y][x];
-                        if (!traite.contains(current)) {
-                            evolveCell(current);
-                            traite.add(current);
-                        }
-                    }
-                }
+            Cellule current = monde.getGrille()[i][j];
+            if (!traite.contains(current)) {
+                evolveCell(current);
+                traite.add(current);
             }
         }
     }
@@ -76,20 +93,27 @@ public class Dieu {
         boolean[] surviveRules = rules.getSurviveRules();
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         System.out.println(nbVoisinesVivante);
-        if(cell.isAlive())
-            if(surviveRules[nbVoisinesVivante])
-                cell.setNextTimeStatus(0);
-            else cell.setNextTimeStatus(-1);
-        else //morte
-            if(bornRules[nbVoisinesVivante])
+        System.out.println("Y :"+cell.getX());
+        System.out.println("X :"+cell.getY());
+        System.out.println(cell.isAlive());
+        if(cell.isAlive()) {
+            if (surviveRules[nbVoisinesVivante]){
+                cell.setNextTimeStatus(0);}
+            else{ cell.setNextTimeStatus(-1);}
+        }
+        else { //morte
+            if (bornRules[nbVoisinesVivante]){
                 cell.setNextTimeStatus(1);
-            else cell.setNextTimeStatus(0);
+                System.out.println("prochaine vivante");
+            }
+            else {cell.setNextTimeStatus(0);}
+        }
     }
 
     public int getNbvoisinesVivanteDe(int i,int j){
         int cpt=0;
-        for(int x=i-1;x<=i-1;x++){
-            for(int y=j-1;y<=j-1;y++){
+        for(int x=i-1;x<=i+1;x++){
+            for(int y=j-1;y<=j+1;y++){
                 if(x>0 && x< monde.getTailleX() && y>0 && y< monde.getTailleY()) {
                     Cellule current = monde.getGrille()[y][x];
                     if(current.isAlive()){
