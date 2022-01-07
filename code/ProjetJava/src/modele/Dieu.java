@@ -12,7 +12,7 @@ public class Dieu {
     public Dieu(Monde monde,Rules rules){
         this.monde = monde;
         this.rules = rules;
-        this.traite = new ArrayList<Cellule>();
+        this.traite = new ArrayList<>();
     }
 
     public void evolve(){
@@ -20,70 +20,38 @@ public class Dieu {
     }
 
     public void faireNaitre(int x,int y){
-        Cellule cell = monde.getGrille()[y][x];
+        Cellule cell = monde.getGrille()[x][y];
         cell.setAlive(true);
         monde.getCelluleEnVie().add(cell); //celluleEnVie, pas traité, traité ne sert que pour l'évolution et l'updateCells
     }
 
     public void tuer(int x,int y){
-        Cellule cell = monde.getGrille()[y][x];
+        Cellule cell = monde.getGrille()[x][y];
         cell.setAlive(false);
         monde.getCelluleEnVie().remove(cell);
     }
 
-    public void afficher(){
-        String ligne = "";
-        for (int i = 0; i < monde.getTailleY(); i++) { //Y pour les colonnes
-            System.out.println(ligne);
+    public void evolution(){
+        int cellX;
+        int cellY;
+        ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
 
-            ligne = "";
-            for (int j = 0; j < monde.getTailleX(); j++) { //X pour les lignes
-                if(monde.getGrille()[i][j].isAlive())
-                    ligne=ligne.concat("X");
-                else{
-                    ligne=ligne.concat("#");
-                }
-            }
-        }
-    }
-    public ArrayList<Cellule> potentielsCellules(ArrayList<Cellule> celluleEnVie) {
-    ArrayList<Cellule> potentielsCellules = new ArrayList<Cellule>();
-    int i , j;
-        for (Cellule celluleVivante : celluleEnVie) {
-            i=celluleVivante.getX();
-            j=celluleVivante.getY();
-            for (int x = i - 1; x <= i + 1; x++) {
-                for (int y = j - 1; y <= j + 1; y++) {
-                    if (x > 0 && x < monde.getTailleX() && y > 0 && y < monde.getTailleY()) {
-                        Cellule current = monde.getGrille()[y][x];
-                        if (!potentielsCellules.contains(current)) {
-                            potentielsCellules.add(current);
+        for (Cellule cell : celluleEnVie)
+        {
+            cellX=cell.getX(); //coordonnée de la cellule de départ de la boucle
+            cellY=cell.getY();
+            //faire la boucle pour prendre en compte les cellule voisines
+
+            for(int x=cellX-1;x<cellX+1;x++){
+                for(int y=cellY-1;y<cellY+1;y++){
+                    if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()){
+                        Cellule current = monde.getGrille()[x][y];
+                        if (!traite.contains(current)) {
+                            evolveCell(current);
+                            //System.out.println(current);
                         }
                     }
                 }
-            }
-        }
-        return potentielsCellules;
-    }
-
-
-    public void evolution(){
-        int i;
-        int j;
-        int x;
-        int y;
-        ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
-        ArrayList<Cellule> cellulesPotentiels = potentielsCellules(celluleEnVie);
-
-
-        for (Cellule cell : cellulesPotentiels)
-        {
-            i=cell.getX();
-            j=cell.getY();
-            Cellule current = monde.getGrille()[i][j];
-            if (!traite.contains(current)) {
-                evolveCell(current);
-                traite.add(current);
             }
         }
     }
@@ -92,32 +60,33 @@ public class Dieu {
         boolean[] bornRules = rules.getBornRules();
         boolean[] surviveRules = rules.getSurviveRules();
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
-        System.out.println(nbVoisinesVivante);
-        System.out.println("Y :"+cell.getX());
-        System.out.println("X :"+cell.getY());
-        System.out.println(cell.isAlive());
+        //System.out.println("Nombre voisine: "+nbVoisinesVivante);
+        cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
-            if (surviveRules[nbVoisinesVivante]){
-                cell.setNextTimeStatus(0);}
-            else{ cell.setNextTimeStatus(-1);}
+            if (surviveRules[nbVoisinesVivante] == false){
+                cell.setNextTimeStatus(-1);
+            }
+            //System.out.println("Survie :"+surviveRules[nbVoisinesVivante]+"; nextTimeStatus: "+cell.getNextTimeStatus());
         }
         else { //morte
-            if (bornRules[nbVoisinesVivante]){
+            if (bornRules[nbVoisinesVivante] == true){
                 cell.setNextTimeStatus(1);
-                System.out.println("prochaine vivante");
+                //System.out.println("prochaine vivante");
             }
-            else {cell.setNextTimeStatus(0);}
+            //System.out.println("Nait :"+bornRules[nbVoisinesVivante]+"; nextTimeStatus: "+cell.getNextTimeStatus());
         }
+        traite.add(cell);
     }
 
     public int getNbvoisinesVivanteDe(int i,int j){
         int cpt=0;
         for(int x=i-1;x<=i+1;x++){
             for(int y=j-1;y<=j+1;y++){
-                if(x>0 && x< monde.getTailleX() && y>0 && y< monde.getTailleY()) {
-                    Cellule current = monde.getGrille()[y][x];
-                    if(current.isAlive()){
-                        cpt=cpt+1;}
+                if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()) {
+                    Cellule current = monde.getGrille()[x][y];
+                    if (current.isAlive()) {
+                        cpt = cpt + 1;
+                    }
                 }
             }
         }
@@ -130,6 +99,12 @@ public class Dieu {
         while(it.hasNext()){
             cellule = it.next();
             cellule.update();
+            if(cellule.getNextTimeStatus() == 1){
+                monde.getCelluleEnVie().add(cellule);
+            }
+            if(cellule.getNextTimeStatus() == -1){
+                monde.getCelluleEnVie().remove(cellule);
+            }
             it.remove();
         }
     }
@@ -149,4 +124,14 @@ public class Dieu {
     public void setTraite(ArrayList<Cellule> traite) {
         this.traite = traite;
     }
+
+    public Monde getMonde() {
+        return monde;
+    }
+
+    public void setMonde(Monde monde) {
+        this.monde = monde;
+    }
+
+
 }

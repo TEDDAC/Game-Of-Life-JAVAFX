@@ -2,6 +2,7 @@ package test;
 
 
 import modele.*;
+import test.Afficheur;
 
 import java.util.ArrayList;
 
@@ -19,20 +20,22 @@ public class Test {
 
         dieu.faireNaitre(1,0);
         dieu.faireNaitre(2,1);
-        dieu.faireNaitre(3,2);
+        dieu.faireNaitre(0,2);
         dieu.faireNaitre(1,2);
         dieu.faireNaitre(2,2);
-        dieu.afficher();
+        Afficheur.afficherCelluleColl(dieu.getMonde().getCelluleEnVie());
+        Afficheur.afficherCelluleColl(dieu.getTraite());
+        Afficheur.afficherGrille(dieu.getMonde());
         System.out.println("\n");
 
-
-        dieu.tuer(2,1);
-        dieu.tuer(1,0);
-        dieu.afficher();
-        for(int x=0;x<10;x++){
+        for(int x=0;x<1;x++){
             dieu.evolution();
+            System.out.println("Cellule traite: ");
+            Afficheur.afficherCelluleColl(dieu.getTraite());
+            System.out.println("\nCellule En Vie: ");
+            Afficheur.afficherCelluleColl(dieu.getMonde().getCelluleEnVie());
             dieu.updateCells();
-            dieu.afficher();
+            Afficheur.afficherGrille(dieu.getMonde());
         }
 
 

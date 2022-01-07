@@ -14,7 +14,7 @@ public class Monde {
     public Monde(int tailleX, int tailleY) {
         this.tailleX = tailleX;
         this.tailleY = tailleY;
-        grille = new Cellule[tailleY][tailleX];
+        grille = new Cellule[tailleX][tailleY];
         this.celluleEnVie = new ArrayList<>();
         generer();
     }
@@ -22,7 +22,7 @@ public class Monde {
     public void generer(){
         for (int i = 0; i < tailleX; i++) {
             for (int j = 0; j < tailleY; j++) {
-                grille[j][i]=new Cellule(j,i);
+                grille[i][j]=new Cellule(i,j);
             }
         }
     }

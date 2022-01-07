@@ -21,7 +21,7 @@ public class Cellule {
     }
 
     public void setNextTimeStatus(int nextTimeStatus) {
-        nextTimeStatus = nextTimeStatus;
+        this.nextTimeStatus = nextTimeStatus;
     }
 
     public boolean isAlive() {
@@ -38,7 +38,7 @@ public class Cellule {
 
     public void update(){
         if(nextTimeStatus == 1) alive = true;
-        if(nextTimeStatus == -1) alive = false;
+        else if(nextTimeStatus == -1) alive = false;
     }
 
     public int getY() {
@@ -55,5 +55,15 @@ public class Cellule {
 
     public void setX(int x) {
         this.x = x;
+    }
+
+    @Override
+    public String toString() {
+        return "Cellule{" +
+                "nextTimeStatus=" + nextTimeStatus +
+                ", alive=" + alive +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
