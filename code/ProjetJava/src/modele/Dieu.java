@@ -40,15 +40,14 @@ public class Dieu {
         {
             cellX=cell.getX(); //coordonnée de la cellule de départ de la boucle
             cellY=cell.getY();
-            //faire la boucle pour prendre en compte les cellule voisines
 
-            for(int x=cellX-1;x<cellX+1;x++){
-                for(int y=cellY-1;y<cellY+1;y++){
+            for(int x=cellX-1;x<=cellX+1;x++){
+                for(int y=cellY-1;y<=cellY+1;y++){
                     if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()){
                         Cellule current = monde.getGrille()[x][y];
                         if (!traite.contains(current)) {
                             evolveCell(current);
-                            //System.out.println(current);
+                            traite.add(current);
                         }
                     }
                 }
@@ -60,22 +59,17 @@ public class Dieu {
         boolean[] bornRules = rules.getBornRules();
         boolean[] surviveRules = rules.getSurviveRules();
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
-        //System.out.println("Nombre voisine: "+nbVoisinesVivante);
         cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
             if (surviveRules[nbVoisinesVivante] == false){
                 cell.setNextTimeStatus(-1);
             }
-            //System.out.println("Survie :"+surviveRules[nbVoisinesVivante]+"; nextTimeStatus: "+cell.getNextTimeStatus());
         }
         else { //morte
             if (bornRules[nbVoisinesVivante] == true){
                 cell.setNextTimeStatus(1);
-                //System.out.println("prochaine vivante");
             }
-            //System.out.println("Nait :"+bornRules[nbVoisinesVivante]+"; nextTimeStatus: "+cell.getNextTimeStatus());
         }
-        traite.add(cell);
     }
 
     public int getNbvoisinesVivanteDe(int i,int j){
@@ -84,8 +78,10 @@ public class Dieu {
             for(int y=j-1;y<=j+1;y++){
                 if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()) {
                     Cellule current = monde.getGrille()[x][y];
-                    if (current.isAlive()) {
-                        cpt = cpt + 1;
+                    if(x!=i || y!=j){
+                        if (current.isAlive()) {
+                            cpt = cpt + 1;
+                        }
                     }
                 }
             }
