@@ -15,10 +15,6 @@ public class Dieu {
         this.traite = new ArrayList<>();
     }
 
-    public void evolve(){
-        ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
-    }
-
     public void faireNaitre(int x,int y){
         Cellule cell = monde.getGrille()[x][y];
         cell.setAlive(true);
