@@ -1,0 +1,20 @@
+fxml dans rsrc
+
+créer dans codeBehind, juste instancier l'objet l'ajout à la fenêtre
+
+launcher static
+
+
+runable interface
+class abstract boucleur implements de runable
+boucleur à une collection d'observateur
+méthode pour add observateur
+méthode beep qui pour chaque observateur update
+arraylist.foreach(o -> update())
+
+observateur a méthode update();
+
+on créer ensuite boucleurSimple
+
+
+new Thread((Boucleur).run())
