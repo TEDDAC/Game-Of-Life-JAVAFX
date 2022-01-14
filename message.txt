@@ -29,3 +29,11 @@ Y'a un problème avec giveVoisines. Mais on va l'enlever, et on va tous refaire 
 
 [Arthur 7/01]
 J'ai refais getVoisinse mais c'est pas concluant je comprend trop pourquoi ...
+
+
+[Arthur 14/01]
+J'ai adapter le diagramme de classe car il était pas à jour
+
+
+
+

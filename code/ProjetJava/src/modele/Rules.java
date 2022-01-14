@@ -1,7 +1,7 @@
 package modele;
 
 public class Rules {
-
+    //SimpleListProperty<E> pour le binding
     private boolean[] bornRules;
     private boolean[] surviveRules;
 
