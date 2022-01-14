@@ -52,7 +52,7 @@ public class Dieu {
     }
 
     public void evolveCell(Cellule cell){
-        boolean[] bornRules = rules.getBornRules();
+        //boolean[] bornRules = rules.getBornRules();
         boolean[] surviveRules = rules.getSurviveRules();
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
@@ -62,7 +62,7 @@ public class Dieu {
             }
         }
         else { //morte
-            if (bornRules[nbVoisinesVivante] == true){
+            if (rules.getBornRules(nbVoisinesVivante).equals(true)){
                 cell.setNextTimeStatus(1);
             }
         }

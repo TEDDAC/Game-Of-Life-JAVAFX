@@ -1,6 +1,6 @@
 fxml dans rsrc
 
-créer dans codeBehind, juste instancier l'objet l'ajout à la fenêtre
+créer dans codeBehind, juste instancier l'objet l'ajoute à la fenêtre
 
 launcher static
 

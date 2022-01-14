@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) {
-        Monde monde = new Monde(10,10);
+        /*Monde monde = new Monde(10,10);
         boolean born[] = new boolean[10];
         boolean survive[] = new boolean[10];
         Arrays.fill(born, false);
@@ -42,7 +42,7 @@ public class Test {
         dieu.faireNaitre(0,1);
         dieu.faireNaitre(1,2);*/
 
-        Afficheur.afficherCelluleColl(dieu.getMonde().getCelluleEnVie());
+        /*Afficheur.afficherCelluleColl(dieu.getMonde().getCelluleEnVie());
         Afficheur.afficherCelluleColl(dieu.getTraite());
         Afficheur.afficherGrille(dieu.getMonde());
         System.out.println("\n");
@@ -60,7 +60,7 @@ public class Test {
             } catch(Exception e){
 
             }
-        }
+        }*/
 
 
     }

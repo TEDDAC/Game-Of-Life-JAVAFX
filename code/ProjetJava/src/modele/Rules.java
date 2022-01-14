@@ -1,28 +1,35 @@
 package modele;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 public class Rules {
-    //SimpleListProperty<E> pour le binding
-    private boolean[] bornRules;
+    private SimpleBooleanProperty[] BornRules;
+    public SimpleBooleanProperty getBornRules(int i){ return BornRules[i]; }
+    public void setBornRules(int i,boolean valeur){ BornRules[i].set(valeur);}
+    public ReadOnlyBooleanProperty[] bornRulesProperty() { return BornRules; };
+
     private boolean[] surviveRules;
 
-    public Rules(boolean[] bornRules, boolean[] surviveRules){
-        this.bornRules = bornRules;
+    public Rules(SimpleBooleanProperty[] bornRules, boolean[] surviveRules){
+        this.BornRules = bornRules;
         this.surviveRules = surviveRules;
     }
 
-    public boolean[] getBornRules() {
-        return bornRules;
+    public BooleanProperty[] getBornRules() {
+        return BornRules;
     }
 
-    public void setBornRules(boolean[] bornRules) {
+    /*public void setBornRules(boolean[] bornRules) {
         this.bornRules = bornRules;
-    }
+    }*/
 
     public boolean[] getSurviveRules() {
         return surviveRules;
     }
 
     public void setSurviveRules(boolean[] surviveRules) {
-        this.bornRules = surviveRules;
+        this.surviveRules = surviveRules;
     }
 }

@@ -1,6 +1,7 @@
 package launcher;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,11 +19,13 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Monde monde = new Monde(10,10);
-        boolean born[] = new boolean[10];
-        boolean survive[] = new boolean[10];
-        Arrays.fill(born, false);
+        SimpleBooleanProperty born[] = new SimpleBooleanProperty[9];
+        boolean survive[] = new boolean[9];
+        for(int i=0;i<9;i++){
+            born[i].set(false);
+        }
         Arrays.fill(survive, false);
-        born[3]=true;
+        born[3].set(true);
         survive[2]=true;
         survive[3]=true;
         Rules rules = new Rules(born,survive);
