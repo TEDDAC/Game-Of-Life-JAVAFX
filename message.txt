@@ -34,6 +34,9 @@ J'ai refais getVoisinse mais c'est pas concluant je comprend trop pourquoi ...
 [Arthur 14/01]
 J'ai adapter le diagramme de classe car il était pas à jour
 
+[Mathis 16/01]
+FUN FACT: si on met l'algo d'évolution dans le launcher après le stage show, ça l'empêche de s'actualiser, et donc on ne voit pas l'interface.
+On doit parler du problème de l'algo et de l'actualisation de la liste celluleEnVie
 
 
 

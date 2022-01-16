@@ -1,17 +1,23 @@
 package modele;
-
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 
 import java.util.ArrayList;
 
 public class Cellule {
     private int nextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
-    private boolean alive;
+    //private boolean alive;
+    private BooleanProperty alive = new SimpleBooleanProperty();
+    public boolean getAlive(){ return alive.get(); }
+    public void setAlive(boolean valeur){ alive.set(valeur);}
+    public BooleanProperty aliveProperty(){ return alive; }
+
     private int x;
     private int y;
 
     public Cellule(int x,int y) { //on initialise toutes les cellules en créant la grille
         nextTimeStatus = 0;
-        alive = false;
+        alive.set(false);
         this.x = x;
         this.y = y;
     }
@@ -25,11 +31,7 @@ public class Cellule {
     }
 
     public boolean isAlive() {
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
+        return getAlive();
     }
 
     public int getNbVoisinesVivante(){
@@ -37,8 +39,8 @@ public class Cellule {
     }
 
     public void update(){
-        if(nextTimeStatus == 1) alive = true;
-        else if(nextTimeStatus == -1) alive = false;
+        if(nextTimeStatus == 1) setAlive(true);
+        else if(nextTimeStatus == -1) setAlive(false);
     }
 
     public int getY() {

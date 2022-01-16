@@ -25,29 +25,11 @@
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de voisines pour naitre:" />
          <HBox fx:id="bornHbox">
             <children>
-                <!--<CheckBox contentDisplay="TOP" mnemonicParsing="false" text="0" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="1" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="2" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="3" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="4" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="5" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="6" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="7" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="8" textOverrun="WORD_ELLIPSIS" />-->
             </children>
          </HBox>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de voisines pour survivre:" x="1.0" y="1.0" />
          <HBox layoutX="10.0" layoutY="26.0" fx:id="surviveHbox">
             <children>
-                <!--<CheckBox contentDisplay="TOP" mnemonicParsing="false" text="0" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="1" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="2" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="3" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="4" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="5" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="6" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="7" textOverrun="WORD_ELLIPSIS" />
-                <CheckBox contentDisplay="TOP" mnemonicParsing="false" text="8" textOverrun="WORD_ELLIPSIS" />-->
             </children>
          </HBox>
           <Button fx:id="charger" text="Run" />

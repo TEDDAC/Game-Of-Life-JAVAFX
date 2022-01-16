@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Dieu {
-    static Monde monde;
+    public static Monde monde;
     public static Rules rules;
-    static ArrayList<Cellule> traite;
+    private ArrayList<Cellule> traite;
 
 
     public Dieu(Monde monde,Rules rules){
@@ -57,12 +57,12 @@ public class Dieu {
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
-            if (rules.getSurviveRules(nbVoisinesVivante).equals(false)){
+            if (rules.getSurviveRules(nbVoisinesVivante) == false){
                 cell.setNextTimeStatus(-1);
             }
         }
         else { //morte
-            if (rules.getBornRules(nbVoisinesVivante).equals(true)){
+            if (rules.getBornRules(nbVoisinesVivante) == true){
                 cell.setNextTimeStatus(1);
             }
         }

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import modele.BoucleDeJeu;
 import modele.Dieu;
 import modele.Monde;
 import modele.Rules;
@@ -18,7 +19,9 @@ import java.util.Arrays;
 public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Monde monde = new Monde(10,10);
+        Monde monde = new Monde(30,30);
+
+        //initialisation du tableau de proprieté au démarrage (règle de naissances)
         SimpleBooleanProperty[] born = new SimpleBooleanProperty[9];
         for(int i=0;i<9;i++){
             born[i] = new SimpleBooleanProperty();
@@ -26,6 +29,7 @@ public class Launcher extends Application {
         }
         born[3].set(true);
 
+        //initialisation du tableau de proprieté au démarrage (règle de survie)
         SimpleBooleanProperty[] survive = new SimpleBooleanProperty[9];
         for(int i=0;i<9;i++){
             survive[i] = new SimpleBooleanProperty();
@@ -48,15 +52,9 @@ public class Launcher extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Vue.fxml")); //relatif à /ressource
         primaryStage.setTitle("Jeu de la vie");
         primaryStage.setScene(new Scene(root,1500,1500));
-        /*GridPane mainGrid = (GridPane) root.lookup("#mainGrid");
-        System.out.println(mainGrid);
-        GridPane plateau = new GridPane();
-        for (int i=0;i<10;i++){
-            for (int j=0;j<10;j++){
-                plateau.add(new CheckBox(),i,j);
-            }
-        }
-        mainGrid.add(plateau,0,1);*/
         primaryStage.show();
+
+        Thread th = new Thread(new BoucleDeJeu(dieu));
+        th.start();
     }
 }
