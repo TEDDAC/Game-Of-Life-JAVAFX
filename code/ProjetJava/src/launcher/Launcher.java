@@ -19,15 +19,21 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Monde monde = new Monde(10,10);
-        SimpleBooleanProperty born[] = new SimpleBooleanProperty[9];
-        boolean survive[] = new boolean[9];
+        SimpleBooleanProperty[] born = new SimpleBooleanProperty[9];
         for(int i=0;i<9;i++){
+            born[i] = new SimpleBooleanProperty();
             born[i].set(false);
         }
-        Arrays.fill(survive, false);
         born[3].set(true);
-        survive[2]=true;
-        survive[3]=true;
+
+        SimpleBooleanProperty[] survive = new SimpleBooleanProperty[9];
+        for(int i=0;i<9;i++){
+            survive[i] = new SimpleBooleanProperty();
+            survive[i].set(false);
+        }
+        survive[2].set(true);
+        survive[3].set(true);
+
         Rules rules = new Rules(born,survive);
         Dieu dieu = new Dieu(monde, rules);
 

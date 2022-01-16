@@ -8,13 +8,16 @@ public class Rules {
     private SimpleBooleanProperty[] BornRules;
     public SimpleBooleanProperty getBornRules(int i){ return BornRules[i]; }
     public void setBornRules(int i,boolean valeur){ BornRules[i].set(valeur);}
-    public ReadOnlyBooleanProperty[] bornRulesProperty() { return BornRules; };
+    public final BooleanProperty bornRulesProperty(int i) { return BornRules[i]; };
 
-    private boolean[] surviveRules;
+    private SimpleBooleanProperty[] SurviveRules;
+    public SimpleBooleanProperty getSurviveRules(int i){ return SurviveRules[i]; }
+    public void setSurviveRules(int i,boolean valeur){ SurviveRules[i].set(valeur);}
+    public final BooleanProperty surviveRulesProperty(int i) { return SurviveRules[i]; };
 
-    public Rules(SimpleBooleanProperty[] bornRules, boolean[] surviveRules){
+    public Rules(SimpleBooleanProperty[] bornRules, SimpleBooleanProperty[] surviveRules){
         this.BornRules = bornRules;
-        this.surviveRules = surviveRules;
+        this.SurviveRules = surviveRules;
     }
 
     public BooleanProperty[] getBornRules() {
@@ -25,11 +28,11 @@ public class Rules {
         this.bornRules = bornRules;
     }*/
 
-    public boolean[] getSurviveRules() {
-        return surviveRules;
+    public BooleanProperty[] getSurviveRules() {
+        return SurviveRules;
     }
 
-    public void setSurviveRules(boolean[] surviveRules) {
-        this.surviveRules = surviveRules;
-    }
+    /*public void setSurviveRules(boolean[] surviveRules) {
+        this.SurviveRules = surviveRules;
+    }*/
 }
