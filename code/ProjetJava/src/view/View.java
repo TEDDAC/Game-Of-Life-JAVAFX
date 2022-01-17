@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
@@ -22,6 +23,7 @@ public class View implements Initializable {
     public HBox surviveHbox;
     public HBox bornHbox;
     public Button playPauseButton;
+    public Slider sliderTime;
 
     @Override
     public void initialize (URL location, ResourceBundle resources){
@@ -47,6 +49,8 @@ public class View implements Initializable {
                 plateau.add(box,i,j);
             }
         }
+
+        sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
     }
 
     public void switchPlay(){
