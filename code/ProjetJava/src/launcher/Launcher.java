@@ -2,12 +2,14 @@ package launcher;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modele.BoucleDeJeu;
 import modele.Dieu;
 import modele.Monde;
@@ -52,6 +54,12 @@ public class Launcher extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Vue.fxml")); //relatif à /ressource
         primaryStage.setTitle("Jeu de la vie");
         primaryStage.setScene(new Scene(root,1500,1500));
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(0);
+            }
+        });
         primaryStage.show();
 
         Thread th = new Thread(new BoucleDeJeu(dieu));

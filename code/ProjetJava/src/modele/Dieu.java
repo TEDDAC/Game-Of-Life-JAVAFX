@@ -8,11 +8,13 @@ public class Dieu {
     public static Rules rules;
     private ArrayList<Cellule> traite;
 
+    public static Dieu instance;//singleton
 
     public Dieu(Monde monde,Rules rules){
         this.monde = monde;
         this.rules = rules;
         this.traite = new ArrayList<>();
+        instance = this;
     }
 
     public void faireNaitre(int x,int y){
@@ -26,10 +28,6 @@ public class Dieu {
     }
 
     public void evolution(){
-        int cellX;
-        int cellY;
-        //ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
-
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
                 Cellule current = monde.getGrille()[x][y];
