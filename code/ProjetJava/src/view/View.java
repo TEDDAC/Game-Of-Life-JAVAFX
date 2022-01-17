@@ -1,11 +1,13 @@
 package view;
 
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import java.util.ResourceBundle;
 import modele.*;
@@ -19,6 +21,7 @@ public class View implements Initializable {
     public GridPane plateau;
     public HBox surviveHbox;
     public HBox bornHbox;
+    public Button playPauseButton;
 
     @Override
     public void initialize (URL location, ResourceBundle resources){
@@ -44,5 +47,13 @@ public class View implements Initializable {
                 plateau.add(box,i,j);
             }
         }
+    }
+
+    public void switchPlay(){
+        if(BoucleDeJeu.getPlayed()) {
+            playPauseButton.setText("Play");
+        } else
+            playPauseButton.setText("Pause");
+        BoucleDeJeu.setPlayed(!BoucleDeJeu.getPlayed());
     }
 }

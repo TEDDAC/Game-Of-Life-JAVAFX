@@ -32,13 +32,11 @@
             <children>
             </children>
          </HBox>
-          <Button fx:id="charger" text="Run" />
+          <Button fx:id="playPauseButton" text="Play" onAction="#switchPlay"/>
       </children>
    </VBox>
-    <children>
-        <GridPane fx:id="plateau" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+    <GridPane fx:id="plateau" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
 
-        </GridPane>
-    </children>
+    </GridPane>
 
 </GridPane>

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Cellule {
     private int nextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
-    //private boolean alive;
+
     private BooleanProperty alive = new SimpleBooleanProperty();
     public boolean getAlive(){ return alive.get(); }
     public void setAlive(boolean valeur){ alive.set(valeur);}
