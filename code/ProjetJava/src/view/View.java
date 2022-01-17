@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Spinner;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
@@ -19,11 +20,20 @@ import java.net.URL;
 import java.util.Arrays;
 
 public class View implements Initializable {
+    @FXML
     public GridPane plateau;
+    @FXML
     public HBox surviveHbox;
+    @FXML
     public HBox bornHbox;
+    @FXML
     public Button playPauseButton;
+    @FXML
     public Slider sliderTime;
+    @FXML
+    public Spinner hauteurSpinner;
+    @FXML
+    public Spinner largeurSpinner;
 
     @Override
     public void initialize (URL location, ResourceBundle resources){
