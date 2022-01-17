@@ -7,7 +7,6 @@ public class Monde {
     private int tailleY;
 
     private Cellule[][] grille;
-    private ArrayList<Cellule> celluleEnVie;
 
 
 
@@ -15,7 +14,6 @@ public class Monde {
         this.tailleX = tailleX;
         this.tailleY = tailleY;
         grille = new Cellule[tailleX][tailleY];
-        this.celluleEnVie = new ArrayList<>();
         generer();
     }
 
@@ -48,14 +46,6 @@ public class Monde {
 
     public void setGrille(Cellule[][] grille) {
         this.grille = grille;
-    }
-
-    public ArrayList<Cellule> getCelluleEnVie() {
-        return celluleEnVie;
-    }
-
-    public void setCelluleEnVie(ArrayList<Cellule> celluleEnVie) {
-        this.celluleEnVie = celluleEnVie;
     }
 
 

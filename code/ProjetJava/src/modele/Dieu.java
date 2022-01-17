@@ -18,42 +18,30 @@ public class Dieu {
     public void faireNaitre(int x,int y){
         Cellule cell = monde.getGrille()[x][y];
         cell.setAlive(true);
-        monde.getCelluleEnVie().add(cell); //celluleEnVie, pas traité, traité ne sert que pour l'évolution et l'updateCells
     }
 
     public void tuer(int x,int y){
         Cellule cell = monde.getGrille()[x][y];
         cell.setAlive(false);
-        monde.getCelluleEnVie().remove(cell);
     }
 
     public void evolution(){
         int cellX;
         int cellY;
-        ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
+        //ArrayList<Cellule> celluleEnVie = monde.getCelluleEnVie();
 
-        for (Cellule cell : celluleEnVie)
-        {
-            cellX=cell.getX(); //coordonnée de la cellule de départ de la boucle
-            cellY=cell.getY();
-
-            for(int x=cellX-1;x<=cellX+1;x++){
-                for(int y=cellY-1;y<=cellY+1;y++){
-                    if(x >= 0 && x < monde.getTailleX() && y >= 0 && y < monde.getTailleY()){
-                        Cellule current = monde.getGrille()[x][y];
-                        if (!traite.contains(current)) {
-                            evolveCell(current);
-                            traite.add(current);
-                        }
-                    }
+        for(int x=0; x<monde.getTailleX();x++){
+            for(int y=0;y<monde.getTailleY();y++){
+                Cellule current = monde.getGrille()[x][y];
+                if (!traite.contains(current)) {
+                    evolveCell(current);
+                    traite.add(current);
                 }
             }
         }
     }
 
     public void evolveCell(Cellule cell){
-        //boolean[] bornRules = rules.getBornRules();
-        //boolean[] surviveRules = rules.getSurviveRules();
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
@@ -91,12 +79,6 @@ public class Dieu {
         while(it.hasNext()){
             cellule = it.next();
             cellule.update();
-            if(cellule.getNextTimeStatus() == 1){
-                monde.getCelluleEnVie().add(cellule);
-            }
-            if(cellule.getNextTimeStatus() == -1){
-                monde.getCelluleEnVie().remove(cellule);
-            }
             it.remove();
         }
     }
