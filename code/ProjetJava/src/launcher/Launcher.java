@@ -24,10 +24,7 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Stub stub = new Stub();
-        /*
-        HashMap<String, Dieu> Config= stub.Config();
-        Dieu dieu=Config.get("Récursif");
-        */
+
         HashMap<String,Monde> CollectionMonde= new HashMap<String,Monde>();
 
         Dieu dieu = stub.Base();

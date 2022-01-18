@@ -77,8 +77,15 @@ public class View implements Initializable {
     public void switchMonde(){
         Stub stub =new Stub();
         HashMap<String,Monde> Dico = stub.Config();
-        System.out.println(TypeDeMonde.getOnMouseClicked());
-        Dieu.monde = Dico.get("Glider");
+        Dieu.instance.setMonde(Dico.get("Récursif"));
+        CheckBox box;
+        for (int i=0;i<Dieu.monde.getTailleX();i++){
+            for (int j=0;j<Dieu.monde.getTailleY();j++){
+                box = new CheckBox();
+                box.setSelected( Dieu.monde.getGrille()[i][j].aliveProperty().getValue());
+                plateau.add(box,i,j);
+            }
+        }
     }
 
     public void switchPlay(){
