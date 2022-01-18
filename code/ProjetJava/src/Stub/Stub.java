@@ -15,6 +15,8 @@ public class Stub {
     }
     public HashMap<String,Monde> Config(){
         HashMap<String,Monde> Config= new HashMap<String, Monde>();
+        Monde monde2 = new Monde(30,30);
+        Config.put("Base",monde2);
         Monde monde = new Monde(30,30);
         //glider
 

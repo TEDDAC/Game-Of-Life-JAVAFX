@@ -1,5 +1,6 @@
 package view;
 
+import Stub.Stub;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.ListView;
+
+import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 import modele.*;
 import test.Afficheur;
@@ -34,6 +39,9 @@ public class View implements Initializable {
     public Spinner hauteurSpinner;
     @FXML
     public Spinner largeurSpinner;
+    @FXML
+    private ListView<String> TypeDeMonde;
+
 
     @Override
     public void initialize (URL location, ResourceBundle resources){
@@ -61,6 +69,16 @@ public class View implements Initializable {
         }
 
         sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
+
+        Stub stub =new Stub();
+        HashMap<String,Monde> Dico = stub.Config();
+        TypeDeMonde.getItems().setAll(Dico.keySet());
+    }
+    public void switchMonde(){
+        Stub stub =new Stub();
+        HashMap<String,Monde> Dico = stub.Config();
+        System.out.println(TypeDeMonde.getOnMouseClicked());
+        Dieu.monde = Dico.get("Glider");
     }
 
     public void switchPlay(){
