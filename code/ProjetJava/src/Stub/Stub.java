@@ -1,6 +1,7 @@
 package Stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import modele.Cellule;
 import modele.Dieu;
 import modele.Monde;
 import modele.Rules;
@@ -12,29 +13,32 @@ import java.util.Map;
 public class Stub {
     public Stub() {
     }
-    public HashMap<String,Dieu> Config(){
-        HashMap<String,Dieu> Config= new HashMap<String, Dieu>();
-        Dieu dieu = Base();
+    public HashMap<String,Monde> Config(){
+        HashMap<String,Monde> Config= new HashMap<String, Monde>();
+        Monde monde = new Monde(30,30);
         //glider
-        dieu.faireNaitre(1,0);
-        dieu.faireNaitre(2,1);
-        dieu.faireNaitre(0,2);
-        dieu.faireNaitre(1,2);
-        dieu.faireNaitre(2,2);
 
-        Config.put("Glider",dieu);
+        monde.getGrille()[1][0].setAlive(true);
+        monde.getGrille()[2][1].setAlive(true);
+        monde.getGrille()[0][2].setAlive(true);
+        monde.getGrille()[1][2].setAlive(true);
+        monde.getGrille()[2][2].setAlive(true);
+
+        Config.put("Glider",monde);
 
         //récursif config
-        Dieu dieu1 = Base();
-
-        dieu1.faireNaitre(1,5);
-        dieu1.faireNaitre(2,5);
-        dieu1.faireNaitre(3,5);
+        Monde monde1 = new Monde(30,30);
 
 
-        Config.put("Récursif",dieu1);
+        monde1.getGrille()[1][5].setAlive(true);
+        monde1.getGrille()[2][5].setAlive(true);
+        monde1.getGrille()[3][5].setAlive(true);
+
+
+        Config.put("Récursif",monde1);
 
         return Config;
+
     }
 
     public Dieu Base(){
