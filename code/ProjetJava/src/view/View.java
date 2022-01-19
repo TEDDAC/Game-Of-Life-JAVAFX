@@ -77,15 +77,34 @@ public class View implements Initializable {
     public void switchMonde(){
         Stub stub =new Stub();
         HashMap<String,Monde> Dico = stub.Config();
-        Dieu.instance.setMonde(Dico.get("Récursif"));
         CheckBox box;
+        int index =TypeDeMonde.getSelectionModel().getSelectedIndex();
+        switch (index){
+            case 1:
+                Dieu.instance.getMonde().setGrille(Dico.get("Récursif").getGrille());
+                System.out.println("Récursif");
+                break;
+            case 2:
+                Dieu.instance.getMonde().setGrille(Dico.get("Glider").getGrille());
+                System.out.println("Glider");
+                break;
+            case 3:
+                Dieu.instance.getMonde().setGrille(Dico.get("Base").getGrille());
+                System.out.println("Base");
+                break;
+            case 0:
+                Dieu.instance.getMonde().setGrille(Dico.get("Achim Flammenkamp").getGrille());
+                System.out.println("Achim Flammenkamp");
+                break;
+        }
         for (int i=0;i<Dieu.monde.getTailleX();i++){
             for (int j=0;j<Dieu.monde.getTailleY();j++){
                 box = new CheckBox();
-                box.setSelected( Dieu.monde.getGrille()[i][j].aliveProperty().getValue());
+                box.selectedProperty().bindBidirectional(Dieu.monde.getGrille()[i][j].aliveProperty());
                 plateau.add(box,i,j);
             }
         }
+
     }
 
     public void switchPlay(){

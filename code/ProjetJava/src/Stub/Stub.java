@@ -39,6 +39,32 @@ public class Stub {
 
         Config.put("Récursif",monde1);
 
+        Monde monde3 = new Monde(30,30);
+
+
+        monde3.getGrille()[1][0].setAlive(true);
+        monde3.getGrille()[2][0].setAlive(true);
+        monde3.getGrille()[0][1].setAlive(true);
+        monde3.getGrille()[1][2].setAlive(true);
+        monde3.getGrille()[1][3].setAlive(true);
+
+        monde3.getGrille()[2][5].setAlive(true);
+        monde3.getGrille()[3][4].setAlive(true);
+        monde3.getGrille()[3][5].setAlive(true);
+        monde3.getGrille()[3][6].setAlive(true);
+        monde3.getGrille()[5][2].setAlive(true);
+        monde3.getGrille()[5][3].setAlive(true);
+        monde3.getGrille()[5][4].setAlive(true);
+        monde3.getGrille()[6][3].setAlive(true);
+        monde3.getGrille()[7][5].setAlive(true);
+        monde3.getGrille()[7][6].setAlive(true);
+        monde3.getGrille()[8][7].setAlive(true);
+        monde3.getGrille()[6][8].setAlive(true);
+        monde3.getGrille()[7][8].setAlive(true);
+        monde3.getGrille()[7][6].setAlive(true);
+
+        Config.put("Achim Flammenkamp",monde3);
+
         return Config;
 
     }
