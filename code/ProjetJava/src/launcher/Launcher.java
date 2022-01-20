@@ -17,6 +17,11 @@ import java.util.HashMap;
 
 
 public class Launcher extends Application {
+    /**
+     * Méthode permettant le lancement de la fenetre et le chargement de nos ressources
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Stub stub = new Stub();

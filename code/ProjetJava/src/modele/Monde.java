@@ -20,7 +20,11 @@ public class Monde{
     private Cellule[][] grille;
 
 
-
+    /**
+     * Constructeur du monde
+     * @param tailleX
+     * @param tailleY
+     */
     public Monde(int tailleX, int tailleY) {
         setTailleX(tailleX);
         setTailleY(tailleY);
@@ -28,6 +32,10 @@ public class Monde{
         generer();
     }
 
+    /**
+     * Permet d'instancier toute les cellules de notre grille
+     *
+     */
     public void generer(){
         grille = new Cellule[getTailleX()][getTailleY()];
         for (int i = 0; i < getTailleX(); i++) {

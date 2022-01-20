@@ -16,6 +16,11 @@ public class Cellule {
     private int x;
     private int y;
 
+    /**
+     * Constructeur d'une cellule
+     * @param x
+     * @param y
+     */
     public Cellule(int x,int y) { //on initialise toutes les cellules en créant la grille
         nextTimeStatus = 0;
         alive.set(false);
@@ -35,10 +40,10 @@ public class Cellule {
         return getAlive();
     }
 
-    public int getNbVoisinesVivante(){
-        return 2;
-    }
 
+    /**
+     * permet à partir du nextTimeStatus fixer dans les méthodes de dieu de définir l'évolution futur d'une cellule vivante,morte.
+     */
     public void update(){
         if(nextTimeStatus == 1) setAlive(true);
         else if(nextTimeStatus == -1) setAlive(false);

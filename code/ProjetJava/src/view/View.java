@@ -45,7 +45,11 @@ public class View implements Initializable {
     private HashMap<String,Rules> regles;
     private Stub stub;
 
-
+    /**
+     * Chargement et bind de nos items
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize (URL location, ResourceBundle resources){
         //Liste des enfants des Hbox des règles
@@ -89,10 +93,17 @@ public class View implements Initializable {
         Dieu.monde.tailleXProperty().bind(largeurSpinner.valueProperty());
     }
 
+    /**
+     * Permet de modifier les règles en fonction de ce que l'utilisateur à choisi dans la combobox
+     */
     public void switchRules(){
         Dieu.rules.switchRulesTo(this.regles.get(presetsRules.getValue()));
     }
 
+    /**
+     * Permet de changer la configuration du monde en fonction de ce que l'utilisateur à choisi dans la listview
+     * en cas d'erreur on génére une exeception et on affiche une fenetre.
+     */
     public void switchMonde(){
         /*largeurSpinner.getValueFactory().setValue(30);
         hauteurSpinner.getValueFactory().setValue(30);*/
@@ -116,6 +127,9 @@ public class View implements Initializable {
         }
     }
 
+    /**
+     * Cette fonction gère le pause/play du jeu
+     */
     public void switchPlay(){
         if(BoucleDeJeu.getPlayed()) {
             playPauseButton.setText("Play");
@@ -124,6 +138,10 @@ public class View implements Initializable {
         BoucleDeJeu.setPlayed(!BoucleDeJeu.getPlayed());
     }
 
+    /**
+     * Cette fonction regénère la grille
+     * @param plateau
+     */
     public void createGrid(GridPane plateau){
         plateau.getChildren().clear();
         CheckBox box;
@@ -136,6 +154,9 @@ public class View implements Initializable {
         }
     }
 
+    /**
+     * Cette fonction appelle clearGrid pour nettoyer la grille
+     */
     public void clearGrid(){
         Dieu.clearGrid();
     }
