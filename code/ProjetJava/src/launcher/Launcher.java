@@ -34,12 +34,7 @@ public class Launcher extends Application {
         primaryStage.setScene(scene);
 
 
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                System.exit(0);
-            }
-        });
+        primaryStage.setOnCloseRequest(event -> System.exit(0));
         primaryStage.show();
 
         Thread th = new Thread(new BoucleDeJeu(dieu));

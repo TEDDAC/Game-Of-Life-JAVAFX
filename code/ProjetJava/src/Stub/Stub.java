@@ -2,10 +2,7 @@ package Stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Cell;
-import modele.Cellule;
-import modele.Dieu;
-import modele.Monde;
-import modele.Rules;
+import modele.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +14,10 @@ public class Stub {
     public HashMap<String,Cellule[][]> Config(){
         HashMap<String,Cellule[][]> Config= new HashMap<>();
 
-        Cellule[][] grille = createGrid();
+        int sizeX = Dieu.monde.getTailleX();
+        int sizeY = Dieu.monde.getTailleY();
+
+        Cellule[][] grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
 
         //glider
         grille[1][0].setAlive(true);
@@ -30,7 +30,7 @@ public class Stub {
 
 
         //récursif config
-        grille = createGrid();
+        grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
 
         grille[1][5].setAlive(true);
         grille[2][5].setAlive(true);
@@ -40,7 +40,7 @@ public class Stub {
         Config.put("Récursif",grille);
 
 
-        grille = createGrid();
+        grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
 
         grille[1][0].setAlive(true);
         grille[2][0].setAlive(true);
@@ -157,16 +157,5 @@ public class Stub {
         Rules rules = new Rules(born,survive);
         Dieu dieu = new Dieu(monde, rules);
         return  dieu;
-    }
-
-    public Cellule[][] createGrid(){
-        Cellule[][] grille = new Cellule[Dieu.monde.getTailleX()][Dieu.monde.getTailleY()];
-        for(int x=0;x<Dieu.monde.getTailleX();x++){
-            for(int y=0;y<Dieu.monde.getTailleY();y++){
-                grille[x][y] = new Cellule(x,y);
-            }
-        }
-
-        return grille;
     }
 }

@@ -1,7 +1,6 @@
 package view;
 
 import Stub.Stub;
-import javafx.beans.binding.ListExpression;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +36,7 @@ public class View implements Initializable {
     public ComboBox<String> presetsRules;
 
     private HashMap<String,Rules> regles;
+    private Stub stub;
 
 
     @Override
@@ -60,7 +60,7 @@ public class View implements Initializable {
 
         sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
 
-        Stub stub =new Stub();
+        stub =new Stub();
         HashMap<String,Cellule[][]> motifs = stub.Config();
         TypeDeMonde.getItems().setAll(motifs.keySet());
 
@@ -87,24 +87,26 @@ public class View implements Initializable {
     }
 
     public void switchMonde(){
-        Stub stub =new Stub();
-        HashMap<String,Cellule[][]> Dico = stub.Config();
-        int index =TypeDeMonde.getSelectionModel().getSelectedIndex();
-        switch (index){
-            case 1:
-                Dieu.instance.getMonde().setGrille(Dico.get("Récursif"));
-                break;
-            case 2:
-                Dieu.instance.getMonde().setGrille(Dico.get("Glider"));
-                break;
-            case 3:
-                Dieu.instance.getMonde().setGrille(Dico.get("Base"));
-                break;
-            case 0:
-                Dieu.instance.getMonde().setGrille(Dico.get("Achim Flammenkamp"));
-                break;
+        /*largeurSpinner.getValueFactory().setValue(30);
+        hauteurSpinner.getValueFactory().setValue(30);*/
+        try{
+            HashMap<String,Cellule[][]> motifs = stub.Config();
+
+            int index =TypeDeMonde.getSelectionModel().getSelectedIndex();
+            switch (index) {
+                case 1 -> Dieu.instance.getMonde().setGrille(motifs.get("Récursif"));
+                case 2 -> Dieu.instance.getMonde().setGrille(motifs.get("Glider"));
+                case 3 -> Dieu.instance.getMonde().setGrille(motifs.get("Base"));
+                case 0 -> Dieu.instance.getMonde().setGrille(motifs.get("Achim Flammenkamp"));
+            }
+            createGrid(plateau);
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Taille de la grille");
+            alert.setContentText("La grille est trop petite pour accueillir ce motifs !");
+            alert.showAndWait();
         }
-        createGrid(plateau);
     }
 
     public void switchPlay(){

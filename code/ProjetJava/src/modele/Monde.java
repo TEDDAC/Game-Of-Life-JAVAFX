@@ -4,7 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 
-public class Monde {
+public class Monde{
     private final static IntegerProperty tailleX = new SimpleIntegerProperty();
     public static int getTailleX(){ return tailleX.get(); }
     public static void setTailleX(int valeur){ tailleX.set(valeur);}
