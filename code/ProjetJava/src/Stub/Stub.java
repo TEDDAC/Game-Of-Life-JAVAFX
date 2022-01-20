@@ -1,6 +1,7 @@
 package Stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.control.Cell;
 import modele.Cellule;
 import modele.Dieu;
 import modele.Monde;
@@ -13,57 +14,56 @@ import java.util.Map;
 public class Stub {
     public Stub() {
     }
-    public HashMap<String,Monde> Config(){
-        HashMap<String,Monde> Config= new HashMap<String, Monde>();
-        Monde monde2 = new Monde(30,30);
-        Config.put("Base",monde2);
-        Monde monde = new Monde(30,30);
+    public HashMap<String,Cellule[][]> Config(){
+        HashMap<String,Cellule[][]> Config= new HashMap<>();
+
+        Cellule[][] grille = createGrid();
+
         //glider
+        grille[1][0].setAlive(true);
+        grille[2][1].setAlive(true);
+        grille[0][2].setAlive(true);
+        grille[1][2].setAlive(true);
+        grille[2][2].setAlive(true);
 
-        monde.getGrille()[1][0].setAlive(true);
-        monde.getGrille()[2][1].setAlive(true);
-        monde.getGrille()[0][2].setAlive(true);
-        monde.getGrille()[1][2].setAlive(true);
-        monde.getGrille()[2][2].setAlive(true);
+        Config.put("Glider",grille);
 
-        Config.put("Glider",monde);
 
         //récursif config
-        Monde monde1 = new Monde(30,30);
+        grille = createGrid();
+
+        grille[1][5].setAlive(true);
+        grille[2][5].setAlive(true);
+        grille[3][5].setAlive(true);
 
 
-        monde1.getGrille()[1][5].setAlive(true);
-        monde1.getGrille()[2][5].setAlive(true);
-        monde1.getGrille()[3][5].setAlive(true);
+        Config.put("Récursif",grille);
 
 
-        Config.put("Récursif",monde1);
+        grille = createGrid();
 
-        Monde monde3 = new Monde(30,30);
+        grille[1][0].setAlive(true);
+        grille[2][0].setAlive(true);
+        grille[0][1].setAlive(true);
+        grille[1][2].setAlive(true);
+        grille[1][3].setAlive(true);
 
+        grille[2][5].setAlive(true);
+        grille[3][4].setAlive(true);
+        grille[3][5].setAlive(true);
+        grille[3][6].setAlive(true);
+        grille[5][2].setAlive(true);
+        grille[5][3].setAlive(true);
+        grille[5][4].setAlive(true);
+        grille[6][3].setAlive(true);
+        grille[7][5].setAlive(true);
+        grille[7][6].setAlive(true);
+        grille[8][7].setAlive(true);
+        grille[6][8].setAlive(true);
+        grille[7][8].setAlive(true);
+        grille[7][6].setAlive(true);
 
-        monde3.getGrille()[1][0].setAlive(true);
-        monde3.getGrille()[2][0].setAlive(true);
-        monde3.getGrille()[0][1].setAlive(true);
-        monde3.getGrille()[1][2].setAlive(true);
-        monde3.getGrille()[1][3].setAlive(true);
-
-        monde3.getGrille()[2][5].setAlive(true);
-        monde3.getGrille()[3][4].setAlive(true);
-        monde3.getGrille()[3][5].setAlive(true);
-        monde3.getGrille()[3][6].setAlive(true);
-        monde3.getGrille()[5][2].setAlive(true);
-        monde3.getGrille()[5][3].setAlive(true);
-        monde3.getGrille()[5][4].setAlive(true);
-        monde3.getGrille()[6][3].setAlive(true);
-        monde3.getGrille()[7][5].setAlive(true);
-        monde3.getGrille()[7][6].setAlive(true);
-        monde3.getGrille()[8][7].setAlive(true);
-        monde3.getGrille()[6][8].setAlive(true);
-        monde3.getGrille()[7][8].setAlive(true);
-        monde3.getGrille()[7][6].setAlive(true);
-
-        Config.put("Achim Flammenkamp",monde3);
+        Config.put("Achim Flammenkamp",grille);
 
         return Config;
 
@@ -157,5 +157,16 @@ public class Stub {
         Rules rules = new Rules(born,survive);
         Dieu dieu = new Dieu(monde, rules);
         return  dieu;
+    }
+
+    public Cellule[][] createGrid(){
+        Cellule[][] grille = new Cellule[Dieu.monde.getTailleX()][Dieu.monde.getTailleY()];
+        for(int x=0;x<Dieu.monde.getTailleX();x++){
+            for(int y=0;y<Dieu.monde.getTailleY();y++){
+                grille[x][y] = new Cellule(x,y);
+            }
+        }
+
+        return grille;
     }
 }

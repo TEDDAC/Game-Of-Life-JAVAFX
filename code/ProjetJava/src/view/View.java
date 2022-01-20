@@ -61,7 +61,7 @@ public class View implements Initializable {
         sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
 
         Stub stub =new Stub();
-        HashMap<String,Monde> motifs = stub.Config();
+        HashMap<String,Cellule[][]> motifs = stub.Config();
         TypeDeMonde.getItems().setAll(motifs.keySet());
 
         this.regles = stub.configRules();
@@ -88,24 +88,20 @@ public class View implements Initializable {
 
     public void switchMonde(){
         Stub stub =new Stub();
-        HashMap<String,Monde> Dico = stub.Config();
+        HashMap<String,Cellule[][]> Dico = stub.Config();
         int index =TypeDeMonde.getSelectionModel().getSelectedIndex();
         switch (index){
             case 1:
-                Dieu.instance.getMonde().setGrille(Dico.get("Récursif").getGrille());
-                System.out.println("Récursif");
+                Dieu.instance.getMonde().setGrille(Dico.get("Récursif"));
                 break;
             case 2:
-                Dieu.instance.getMonde().setGrille(Dico.get("Glider").getGrille());
-                System.out.println("Glider");
+                Dieu.instance.getMonde().setGrille(Dico.get("Glider"));
                 break;
             case 3:
-                Dieu.instance.getMonde().setGrille(Dico.get("Base").getGrille());
-                System.out.println("Base");
+                Dieu.instance.getMonde().setGrille(Dico.get("Base"));
                 break;
             case 0:
-                Dieu.instance.getMonde().setGrille(Dico.get("Achim Flammenkamp").getGrille());
-                System.out.println("Achim Flammenkamp");
+                Dieu.instance.getMonde().setGrille(Dico.get("Achim Flammenkamp"));
                 break;
         }
         createGrid(plateau);
