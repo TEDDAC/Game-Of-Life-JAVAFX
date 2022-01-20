@@ -10,6 +10,33 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
+
 .button:hover {
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+.check-box .box {
+
+-fx-background-color: white;
+-fx-border-color:grey;
+-fx-border-radius:3px;
+
+}
+
+.check-box .box {
+
+-fx-background-color: white;
+-fx-border-color:grey;
+-fx-border-radius:3px;
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: #2A5058;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color: #2A5058;
 }
