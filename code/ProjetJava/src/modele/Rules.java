@@ -34,4 +34,11 @@ public class Rules {
     /*public void setSurviveRules(boolean[] surviveRules) {
         this.SurviveRules = surviveRules;
     }*/
+
+    public void switchRulesTo(Rules newRules){
+        for(int i=0;i<9;i++){
+            setBornRules(i, newRules.getBornRules(i));
+            setSurviveRules(i, newRules.getSurviveRules(i));
+        }
+    }
 }

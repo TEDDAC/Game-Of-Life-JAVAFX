@@ -42,6 +42,4 @@ public class Monde {
     public void setGrille(Cellule[][] grille) {
         this.grille = grille;
     }
-
-
 }

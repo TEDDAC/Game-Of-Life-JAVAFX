@@ -1,28 +1,20 @@
 package view;
 
 import Stub.Stub;
+import javafx.beans.binding.ListExpression;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.ListView;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
 import modele.*;
-import test.Afficheur;
 
-import java.awt.*;
 import java.net.URL;
-import java.util.Arrays;
 
 public class View implements Initializable {
     @FXML
@@ -36,11 +28,15 @@ public class View implements Initializable {
     @FXML
     public Slider sliderTime;
     @FXML
-    public Spinner hauteurSpinner;
+    public Spinner<Integer> hauteurSpinner;
     @FXML
-    public Spinner largeurSpinner;
+    public Spinner<Integer> largeurSpinner;
     @FXML
-    private ListView<String> TypeDeMonde;
+    public ListView<String> TypeDeMonde;
+    @FXML
+    public ComboBox<String> presetsRules;
+
+    private HashMap<String,Rules> regles;
 
 
     @Override
@@ -65,13 +61,20 @@ public class View implements Initializable {
         sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
 
         Stub stub =new Stub();
-        HashMap<String,Monde> Dico = stub.Config();
-        TypeDeMonde.getItems().setAll(Dico.keySet());
+        HashMap<String,Monde> motifs = stub.Config();
+        TypeDeMonde.getItems().setAll(motifs.keySet());
+
+        this.regles = stub.configRules();
+        presetsRules.getItems().setAll(regles.keySet());
+
+    }
+
+    public void switchRules(){
+        Dieu.rules.switchRulesTo(this.regles.get(presetsRules.getValue()));
     }
     public void switchMonde(){
         Stub stub =new Stub();
         HashMap<String,Monde> Dico = stub.Config();
-        CheckBox box;
         int index =TypeDeMonde.getSelectionModel().getSelectedIndex();
         switch (index){
             case 1:
@@ -111,5 +114,9 @@ public class View implements Initializable {
                 plateau.add(box,i,j);
             }
         }
+    }
+
+    public void clearGrid(){
+        Dieu.clearGrid();
     }
 }

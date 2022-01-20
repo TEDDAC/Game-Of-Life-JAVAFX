@@ -43,7 +43,7 @@ public class BoucleDeJeu implements Runnable{
             } catch(Exception e){
 
             }
-            System.out.println(cpt = cpt+1);
+            //System.out.println(cpt = cpt+1);
         }
     }
 }
