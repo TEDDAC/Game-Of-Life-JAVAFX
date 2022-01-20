@@ -1,12 +1,9 @@
-package Stub;
+package stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.control.Cell;
 import modele.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Stub {
     public Stub() {

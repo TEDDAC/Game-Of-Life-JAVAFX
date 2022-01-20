@@ -4,15 +4,15 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class Rules {
-    private SimpleBooleanProperty[] BornRules; //tableau de propriété booléen
-    public boolean getBornRules(int i){ return BornRules[i].get(); }
-    public void setBornRules(int i,boolean valeur){ BornRules[i].set(valeur);}
-    public final BooleanProperty bornRulesProperty(int i) { return BornRules[i]; };
+    private SimpleBooleanProperty[] bornRules; //tableau de propriété booléen
+    public boolean getbornRules(int i){ return bornRules[i].get(); }
+    public void setbornRules(int i,boolean valeur){ bornRules[i].set(valeur);}
+    public final BooleanProperty bornRulesProperty(int i) { return bornRules[i]; };
 
-    private SimpleBooleanProperty[] SurviveRules; //tableau de propriété booléen
-    public boolean getSurviveRules(int i){ return SurviveRules[i].get(); }
-    public void setSurviveRules(int i,boolean valeur){ SurviveRules[i].set(valeur);}
-    public final BooleanProperty surviveRulesProperty(int i) { return SurviveRules[i]; };
+    private SimpleBooleanProperty[] surviveRules; //tableau de propriété booléen
+    public boolean getsurviveRules(int i){ return surviveRules[i].get(); }
+    public void setsurviveRules(int i,boolean valeur){ surviveRules[i].set(valeur);}
+    public final BooleanProperty surviveRulesProperty(int i) { return surviveRules[i]; };
 
     /**
      * Constructeur des règles
@@ -20,24 +20,24 @@ public class Rules {
      * @param surviveRules
      */
     public Rules(SimpleBooleanProperty[] bornRules, SimpleBooleanProperty[] surviveRules){
-        this.BornRules = bornRules;
-        this.SurviveRules = surviveRules;
+        this.bornRules = bornRules;
+        this.surviveRules = surviveRules;
     }
 
-    public BooleanProperty[] getBornRules() {
-        return BornRules;
+    public BooleanProperty[] getbornRules() {
+        return bornRules;
     }
 
-    /*public void setBornRules(boolean[] bornRules) {
+    /*public void setbornRules(boolean[] bornRules) {
         this.bornRules = bornRules;
     }*/
 
-    public BooleanProperty[] getSurviveRules() {
-        return SurviveRules;
+    public BooleanProperty[] getsurviveRules() {
+        return surviveRules;
     }
 
-    /*public void setSurviveRules(boolean[] surviveRules) {
-        this.SurviveRules = surviveRules;
+    /*public void setsurviveRules(boolean[] surviveRules) {
+        this.surviveRules = surviveRules;
     }*/
 
     /**
@@ -46,8 +46,8 @@ public class Rules {
      */
     public void switchRulesTo(Rules newRules){
         for(int i=0;i<9;i++){
-            setBornRules(i, newRules.getBornRules(i));
-            setSurviveRules(i, newRules.getSurviveRules(i));
+            setbornRules(i, newRules.getbornRules(i));
+            setsurviveRules(i, newRules.getsurviveRules(i));
         }
     }
 }

@@ -58,12 +58,12 @@ public class Dieu {
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
-            if (rules.getSurviveRules(nbVoisinesVivante) == false){
+            if (rules.getsurviveRules(nbVoisinesVivante) == false){
                 cell.setNextTimeStatus(-1);
             }
         }
         else { //morte
-            if (rules.getBornRules(nbVoisinesVivante) == true){
+            if (rules.getbornRules(nbVoisinesVivante) == true){
                 cell.setNextTimeStatus(1);
             }
         }
