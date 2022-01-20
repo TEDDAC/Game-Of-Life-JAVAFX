@@ -1,76 +1,22 @@
 package Stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.control.Cell;
 import modele.*;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * Permet de générer toutes les données au lancement.
+ */
 public class Stub {
     public Stub() {
     }
-    public HashMap<String,Cellule[][]> Config(){
-        HashMap<String,Cellule[][]> Config= new HashMap<>();
 
-        int sizeX = Dieu.monde.getTailleX();
-        int sizeY = Dieu.monde.getTailleY();
-
-        Cellule[][] grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
-
-        //glider
-        grille[1][0].setAlive(true);
-        grille[2][1].setAlive(true);
-        grille[0][2].setAlive(true);
-        grille[1][2].setAlive(true);
-        grille[2][2].setAlive(true);
-
-        Config.put("Glider",grille);
-
-
-        //récursif config
-        grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
-
-        grille[1][5].setAlive(true);
-        grille[2][5].setAlive(true);
-        grille[3][5].setAlive(true);
-
-
-        Config.put("Récursif",grille);
-
-
-        grille = GrilleCellFactory.createCellGrid(sizeX,sizeY);
-
-        grille[1][0].setAlive(true);
-        grille[2][0].setAlive(true);
-        grille[0][1].setAlive(true);
-        grille[1][2].setAlive(true);
-        grille[1][3].setAlive(true);
-
-        grille[2][5].setAlive(true);
-        grille[3][4].setAlive(true);
-        grille[3][5].setAlive(true);
-        grille[3][6].setAlive(true);
-        grille[5][2].setAlive(true);
-        grille[5][3].setAlive(true);
-        grille[5][4].setAlive(true);
-        grille[6][3].setAlive(true);
-        grille[7][5].setAlive(true);
-        grille[7][6].setAlive(true);
-        grille[8][7].setAlive(true);
-        grille[6][8].setAlive(true);
-        grille[7][8].setAlive(true);
-        grille[7][6].setAlive(true);
-
-        Config.put("Achim Flammenkamp",grille);
-
-        return Config;
-
-    }
-
+    /**
+     * Configure les différentes règles.
+     * @return Retourne un dictionnaire de règles.
+     */
     public HashMap<String,Rules> configRules(){
-        HashMap<String,Rules> config= new HashMap<String, Rules>();
+        HashMap<String,Rules> config= new HashMap<>();
 
         //default
         SimpleBooleanProperty[] born = new SimpleBooleanProperty[9];
@@ -131,9 +77,34 @@ public class Stub {
         }
 
         config.put("Blob",new Rules(born,survive));
+
+        //Maze: live 1-5, born 3
+        born = new SimpleBooleanProperty[9];
+        for(int i=0;i<9;i++){
+            born[i] = new SimpleBooleanProperty();
+            born[i].set(false);
+        }
+        born[3].set(true);
+
+        survive = new SimpleBooleanProperty[9];
+        for(int i=0;i<9;i++){
+            survive[i] = new SimpleBooleanProperty();
+            survive[i].set(false);
+        }
+        survive[1].set(true);
+        survive[2].set(true);
+        survive[3].set(true);
+        survive[4].set(true);
+        survive[5].set(true);
+
+        config.put("Maze",new Rules(born,survive));
         return config;
     }
 
+    /**
+     * Permet de créer le dieu au démarrage.
+     * @return retourne une instance de dieu.
+     */
     public Dieu Base(){
         Monde monde = new Monde(30,30);
 
@@ -155,7 +126,6 @@ public class Stub {
         survive[3].set(true);
 
         Rules rules = new Rules(born,survive);
-        Dieu dieu = new Dieu(monde, rules);
-        return  dieu;
+        return new Dieu(monde, rules);
     }
 }

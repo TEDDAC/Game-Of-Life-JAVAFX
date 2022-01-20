@@ -11,6 +11,11 @@ import java.lang.Thread;
 import java.util.ArrayList;
 
 public class Test {
+
+    /**
+     * Fonction servant pour tester le model dans le terminal
+     * @deprecated Le code n'est pas à jour et utilise d'anciennes fonctions qui n'existe plus.
+     */
     public static void main(String[] args) {
         /*Monde monde = new Monde(10,10);
         boolean born[] = new boolean[10];

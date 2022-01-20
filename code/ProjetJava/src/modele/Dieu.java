@@ -5,14 +5,22 @@ import java.util.Iterator;
 
 
 public class Dieu {
+    /**
+     * Contient la grille de cellule et ses dimensions
+     */
     public static Monde monde;
+    /**
+     * Contient les règles de naissance et de survie de cellules
+     */
     public static Rules rules;
-    private ArrayList<Cellule> traite;
-
-    public static Dieu instance;//singleton
 
     /**
-     *
+     * Contient les cellules qui ont été traitées, et dont le prochain état a est determiné
+     */
+    private ArrayList<Cellule> traite;
+
+    /**
+     * Constructeur de dieu
      * @param monde un dieu possède un monde
      * @param rules un dieu connait aussi les règles
      */
@@ -20,11 +28,10 @@ public class Dieu {
         this.monde = monde;
         this.rules = rules;
         this.traite = new ArrayList<>();
-        instance = this;
     }
 
     /**
-     * permet de setter toutes les cellules à morte donc de nettoyer la grille
+     * permet de tuer toutes les cellules, donc de nettoyer la grille
      */
     public static void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
@@ -35,7 +42,7 @@ public class Dieu {
     }
 
     /**
-     * remplit traité de cellule à faire traité updateCell
+     * Parcours le tableau pour determiner le prochain état des cellules
      */
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
@@ -50,31 +57,29 @@ public class Dieu {
     }
 
     /**
-     *
      * Cette fonction détermine le prochain état d'une cellule en fonction du nombre de cellules voisines et des règles
-     * @param cell
+     * @param cell La cellule dont ont souhaite déterminer le prochain état
      */
     public void evolveCell(Cellule cell){
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
         if(cell.isAlive()) {
-            if (rules.getSurviveRules(nbVoisinesVivante) == false){
+            if (!rules.getSurviveRules(nbVoisinesVivante)){
                 cell.setNextTimeStatus(-1);
             }
         }
         else { //morte
-            if (rules.getBornRules(nbVoisinesVivante) == true){
+            if (rules.getBornRules(nbVoisinesVivante)){
                 cell.setNextTimeStatus(1);
             }
         }
     }
 
     /**
-     *
-     * Cette fonction va à partir d'une position d'une cellule déterminer le nombre de cellules voisine vivante qu'elle a.
-     * @param i
-     * @param j
-     * @return nombre de cellule voisine vivante
+     * Determine le nombre de cellules voisines vivantes pour les coordonnées données.
+     * @param i Coordonnées x
+     * @param j Coordonnées y
+     * @return Nombre de cellules voisines vivantes
      */
     public int getNbvoisinesVivanteDe(int i,int j){
         int cpt=0;
@@ -94,8 +99,7 @@ public class Dieu {
     }
 
     /**
-     * Itere sur toutes les cellules à traiter et donne à chaque cellule sa nouvelle forme grâce à update
-     * à chaque fois qu'une cellule est traité elle est donc supprimé de la liste traité
+     * Mais toutes les cellules traitées à jour.
      */
     public void updateCells() {
         Iterator<Cellule> it = traite.iterator();
@@ -107,26 +111,50 @@ public class Dieu {
         }
     }
 
-
+    /**
+     * Getter
+     * @return
+     */
     public Rules getRules() {
         return rules;
     }
 
+    /**
+     * Setter
+     * @param rules
+     */
     public void setRules(Rules rules) {
         this.rules = rules;
     }
+
+    /**
+     * Getter
+     * @return
+     */
     public ArrayList<Cellule> getTraite() {
         return traite;
     }
 
+    /**
+     * Setter
+     * @param traite
+     */
     public void setTraite(ArrayList<Cellule> traite) {
         this.traite = traite;
     }
 
+    /**
+     * Getter
+     * @return
+     */
     public Monde getMonde() {
         return monde;
     }
 
+    /**
+     * Setter
+     * @param monde
+     */
     public void setMonde(Monde monde) {
         this.monde = monde;
     }

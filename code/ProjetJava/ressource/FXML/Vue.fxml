@@ -58,8 +58,6 @@
               <Button fx:id="playPauseButton" onAction="#switchPlay" text="Play" />
               <Button fx:id="clearGrid" onAction="#clearGrid" text="Vider la grille"/>
           </HBox>
-
-          <ListView fx:id="TypeDeMonde" onMouseClicked="#switchMonde"/>
       </children>
    </VBox>
     <GridPane fx:id="plateau" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">

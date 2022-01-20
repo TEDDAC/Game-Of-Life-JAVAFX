@@ -1,29 +1,32 @@
 package modele;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BoucleDeJeu implements Runnable{
+    /**
+     * Instance du dieu
+     */
     private final Dieu dieu;
-    private ArrayList<Object> observateur= new ArrayList<>();
 
+    /**
+     * Indique à la pause si elle est lancé ou non
+     */
     public static boolean played = false;
     public static boolean getPlayed(){ return played; }
     public static void setPlayed(boolean valeur){ played = valeur;}
 
-    private static IntegerProperty time = new SimpleIntegerProperty();
+    /**
+     * Période entre chaque répétition de la boucle
+     */
+    private final static IntegerProperty time = new SimpleIntegerProperty();
     public static int getTime(){ return time.get(); }
     public static void setTime(int valeur){ time.set(valeur);}
     public static IntegerProperty timeProperty(){ return time; }
 
     /**
-     * Constructeur de dieu
-     * @param dieu
+     * Constructeur de la boucle de jeu
+     * @param dieu Le dieu qui sera modifié par la boucle de jeu.
      */
     public BoucleDeJeu(Dieu dieu){
         this.dieu = dieu;
@@ -31,30 +34,20 @@ public class BoucleDeJeu implements Runnable{
     }
 
     /**
-     * Méthode permettant d'ajouter une observateur
-     * @param a
-     */
-    public void ajouterObservateur(Object a){
-        observateur.add(a);
-    }
-
-    /**
      * Algorithme de la boucle de jeu
      */
     @Override
     public void run() {
-        int cpt = 0;
         while(true){
-            if(BoucleDeJeu.getPlayed() == true){
+            if(BoucleDeJeu.getPlayed()){
                 dieu.evolution();
                 dieu.updateCells();
             }
             try { //ne pas mettre dans la boucle, sinon ça ne tourne pas
                 Thread.sleep(getTime());
             } catch(Exception e){
-
+                e.printStackTrace();
             }
-            //System.out.println(cpt = cpt+1);
         }
     }
 }

@@ -2,24 +2,33 @@ package modele;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 public class Cellule {
-    private int nextTimeStatus; // si c'est -1 la cellule doit mourir à la prochaine itération, si 0 pas de changement, si 1 elle doit vivre
+    /**
+     * Etat de la cellule au prochain tour de boucle. -1 signifie que la cellule va mourir, 1 signifie qu'elle va naitre, 0 ne change rien
+     */
+    private int nextTimeStatus;
 
-    private BooleanProperty alive = new SimpleBooleanProperty();
+    /**
+     * Etat de la cellule (en vie ou morte).
+     */
+    private final BooleanProperty alive = new SimpleBooleanProperty();
     public boolean getAlive(){ return alive.get(); }
     public void setAlive(boolean valeur){ alive.set(valeur);}
     public BooleanProperty aliveProperty(){ return alive; }
 
+    /**
+     * Coordonnée X de la cellule dans la grille
+     */
     private int x;
+    /**
+     * Coordonnée Y de la cellule dans la grille
+     */
     private int y;
 
     /**
      * Constructeur d'une cellule
-     * @param x
-     * @param y
+     * @param x Coordonnée X de la cellule dans la grille
+     * @param y Coordonnée Y de la cellule dans la grille
      */
     public Cellule(int x,int y) { //on initialise toutes les cellules en créant la grille
         nextTimeStatus = 0;
@@ -28,39 +37,67 @@ public class Cellule {
         this.y = y;
     }
 
+    /**
+     * Guetter de nextTimeStatus
+     * @return entier
+     */
     public int getNextTimeStatus() {
         return nextTimeStatus;
     }
 
+    /**
+     * Setter de nextTimeStatus
+     * @param nextTimeStatus
+     */
     public void setNextTimeStatus(int nextTimeStatus) {
         this.nextTimeStatus = nextTimeStatus;
     }
 
+    /**
+     * Indique si la cellule est en vie ou non.
+     * @return True si elle est en vie, false sinon
+     */
     public boolean isAlive() {
         return getAlive();
     }
 
 
     /**
-     * permet à partir du nextTimeStatus fixer dans les méthodes de dieu de définir l'évolution futur d'une cellule vivante,morte.
+     * Permet d'actualiser la cellule et de lui donner sont état pour le prochain tour de boucle.
      */
     public void update(){
         if(nextTimeStatus == 1) setAlive(true);
         else if(nextTimeStatus == -1) setAlive(false);
     }
 
+    /**
+     * Guetter de Y
+     * @return entier
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Setter de Y
+     * @param y
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     * Getter
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Setter
+     * @param x
+     */
     public void setX(int x) {
         this.x = x;
     }

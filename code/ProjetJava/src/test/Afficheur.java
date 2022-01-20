@@ -6,7 +6,14 @@ import modele.Monde;
 
 import java.util.ArrayList;
 
+/**
+ * Classe pour l'affichage en terminal
+ */
 public class Afficheur {
+    /**
+     * Affiche un monde dans le terminal
+     * @param monde Monde à afficher.
+     */
     public static void afficherGrille(Monde monde){
         String ligne = "";
         for (int i = 0; i < monde.getTailleY(); i++) { //Y pour les colonnes
@@ -22,6 +29,10 @@ public class Afficheur {
         }
     }
 
+    /**
+     * Affiche une ArrayList de cellule dans le terminal
+     * @param celluleCol List qu'on souhaite afficher
+     */
     public static void afficherCelluleColl(ArrayList<Cellule> celluleCol){
         for(Cellule cell : celluleCol){
             System.out.println(cell.toString());
