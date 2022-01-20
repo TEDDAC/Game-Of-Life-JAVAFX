@@ -1,6 +1,6 @@
 package launcher;
 
-import Stub.Stub;
+import stub.Stub;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +22,7 @@ public class Launcher extends Application {
 
         Dieu dieu = stub.Base();
         //instanciation des vues
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Vue.fxml")); //relatif à /ressource
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Vue.fxml")); //relatif à /ressource
 
         primaryStage.setTitle("Jeu de la vie");
         Scene scene = new Scene(root,1500,1500);

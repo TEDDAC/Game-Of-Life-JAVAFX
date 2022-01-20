@@ -1,4 +1,4 @@
-package Stub;
+package stub;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import modele.*;

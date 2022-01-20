@@ -1,6 +1,7 @@
 package view;
 
-import Stub.Stub;
+
+import stub.Stub;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
