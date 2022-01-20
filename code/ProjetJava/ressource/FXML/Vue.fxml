@@ -50,6 +50,11 @@
           </HBox>
 
           <HBox>
+              <Button text="Sauvegarder le motif" onAction="#save"/>
+              <Button text="Charger motif" onAction="#load"/>
+          </HBox>
+
+          <HBox>
               <Button fx:id="playPauseButton" onAction="#switchPlay" text="Play" />
               <Button fx:id="clearGrid" onAction="#clearGrid" text="Vider la grille"/>
           </HBox>

@@ -3,6 +3,8 @@ package modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+import java.io.Serializable;
+
 
 public class Monde{
     private final static IntegerProperty tailleX = new SimpleIntegerProperty();

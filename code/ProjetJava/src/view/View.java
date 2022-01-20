@@ -2,6 +2,7 @@ package view;
 
 import Stub.Stub;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -9,8 +10,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.io.File;
+import java.security.cert.Extension;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import modele.*;
 
 import java.net.URL;
@@ -131,5 +138,25 @@ public class View implements Initializable {
 
     public void clearGrid(){
         Dieu.clearGrid();
+    }
+
+    public void save(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Sauvegarder un motif");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Pattern Files", "*.cgl"));
+        Window mainStage = plateau.getScene().getWindow();
+        File selectedFile = fileChooser.showSaveDialog(mainStage);
+        ISaver.save(Dieu.monde,selectedFile);
+    }
+
+    public void load(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Charger un motif");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Pattern Files", "*.cgl"));
+        Window mainStage = plateau.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(mainStage);
+        ILoader.load(Dieu.monde,selectedFile,largeurSpinner,hauteurSpinner);
     }
 }
