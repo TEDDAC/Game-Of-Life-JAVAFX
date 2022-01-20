@@ -2,21 +2,16 @@ package launcher;
 
 import Stub.Stub;
 import javafx.application.Application;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modele.BoucleDeJeu;
 import modele.Dieu;
 import modele.Monde;
-import modele.Rules;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -31,9 +26,15 @@ public class Launcher extends Application {
         CollectionMonde = stub.Config();
         dieu.setMonde(CollectionMonde.get("Glider"));
         //instanciation des vues
-        Parent root = FXMLLoader.load(getClass().getResource("/Vue.fxml")); //relatif à /ressource
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Vue.fxml")); //relatif à /ressource
+
         primaryStage.setTitle("Jeu de la vie");
-        primaryStage.setScene(new Scene(root,1500,1500));
+        Scene scene = new Scene(root,1500,1500);
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+
+        primaryStage.setScene(scene);
+
+
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
