@@ -14,6 +14,11 @@ public class Rules {
     public void setSurviveRules(int i,boolean valeur){ SurviveRules[i].set(valeur);}
     public final BooleanProperty surviveRulesProperty(int i) { return SurviveRules[i]; };
 
+    /**
+     * Constructeur des règles
+     * @param bornRules
+     * @param surviveRules
+     */
     public Rules(SimpleBooleanProperty[] bornRules, SimpleBooleanProperty[] surviveRules){
         this.BornRules = bornRules;
         this.SurviveRules = surviveRules;
@@ -35,6 +40,10 @@ public class Rules {
         this.SurviveRules = surviveRules;
     }*/
 
+    /**
+     * permet de changer les règles dans un jeu
+     * @param newRules
+     */
     public void switchRulesTo(Rules newRules){
         for(int i=0;i<9;i++){
             setBornRules(i, newRules.getBornRules(i));

@@ -21,15 +21,26 @@ public class BoucleDeJeu implements Runnable{
     public static void setTime(int valeur){ time.set(valeur);}
     public static IntegerProperty timeProperty(){ return time; }
 
+    /**
+     * Constructeur de dieu
+     * @param dieu
+     */
     public BoucleDeJeu(Dieu dieu){
         this.dieu = dieu;
         setTime(500);
     }
 
+    /**
+     * Méthode permettant d'ajouter une observateur
+     * @param a
+     */
     public void ajouterObservateur(Object a){
         observateur.add(a);
     }
 
+    /**
+     * Algorithme de la boucle de jeu
+     */
     @Override
     public void run() {
         int cpt = 0;

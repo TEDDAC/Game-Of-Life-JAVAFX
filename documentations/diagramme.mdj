@@ -376,7 +376,7 @@
 									"font": "Arial;13;0",
 									"left": 1035.5,
 									"top": 643,
-									"width": 171.07177734375,
+									"width": 170,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dU//OWkOB8I="
@@ -575,7 +575,7 @@
 									"font": "Arial;13;0",
 									"left": 884.5,
 									"top": 331.5,
-									"width": 176.17529296875,
+									"width": 176,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dVFHsGk/yRs="
@@ -774,7 +774,7 @@
 									"font": "Arial;13;0",
 									"left": 681.5,
 									"top": 591,
-									"width": 200.0107421875,
+									"width": 199,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF9dVMujGpQyHc="
@@ -1173,7 +1173,7 @@
 									"font": "Arial;13;0",
 									"left": 1065.5,
 									"top": 444.5,
-									"width": 160.9853515625,
+									"width": 160,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF+eDeIzAL5Z7c="
@@ -4653,6 +4653,7 @@
 											"model": {
 												"$ref": "AAAAAAF+KZPo5XzITu0="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
 											"top": 573,
@@ -4670,9 +4671,10 @@
 											"model": {
 												"$ref": "AAAAAAF+KZSThH1lus4="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 588,
+											"top": 573,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+tuer(x: int, y: int)",
@@ -4689,7 +4691,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 603,
+											"top": 573,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+Dieu(Monde monde, Rules rules)",
@@ -4706,7 +4708,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 618,
+											"top": 588,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+getNbvoisinesVivantesDe(int x, int y)",
@@ -4723,7 +4725,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 633,
+											"top": 603,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+getRules(): Rules",
@@ -4740,7 +4742,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 648,
+											"top": 618,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+setRules(Rules rules)",
@@ -4757,7 +4759,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 663,
+											"top": 633,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+getTraite(): Liste<Cellule> traite",
@@ -4774,7 +4776,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 678,
+											"top": 648,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+setTraite(traite: Liste <Cellule>)",
@@ -4791,7 +4793,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 693,
+											"top": 663,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+getMonde(): Monde",
@@ -4808,7 +4810,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 708,
+											"top": 678,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+setMonde(Monde monde)",
@@ -4825,7 +4827,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 723,
+											"top": 693,
 											"width": 219.0576171875,
 											"height": 13,
 											"text": "+clearGrid()",
@@ -4836,7 +4838,7 @@
 									"left": 288,
 									"top": 523,
 									"width": 229.0576171875,
-									"height": 218
+									"height": 188
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",

@@ -3,6 +3,7 @@ package modele;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class Dieu {
     public static Monde monde;
     public static Rules rules;
@@ -10,6 +11,11 @@ public class Dieu {
 
     public static Dieu instance;//singleton
 
+    /**
+     *
+     * @param monde un dieu possède un monde
+     * @param rules un dieu connait aussi les règles
+     */
     public Dieu(Monde monde,Rules rules){
         this.monde = monde;
         this.rules = rules;
@@ -17,6 +23,9 @@ public class Dieu {
         instance = this;
     }
 
+    /**
+     * permet de setter toutes les cellules à morte donc de nettoyer la grille
+     */
     public static void clearGrid() {
         for(int x=0;x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
@@ -25,6 +34,9 @@ public class Dieu {
         }
     }
 
+    /**
+     * remplit traité de cellule à faire traité updateCell
+     */
     public void evolution(){
         for(int x=0; x<monde.getTailleX();x++){
             for(int y=0;y<monde.getTailleY();y++){
@@ -37,6 +49,11 @@ public class Dieu {
         }
     }
 
+    /**
+     *
+     * Cette fonction détermine le prochain état d'une cellule en fonction du nombre de cellules voisines et des règles
+     * @param cell
+     */
     public void evolveCell(Cellule cell){
         int nbVoisinesVivante = getNbvoisinesVivanteDe(cell.getX(),cell.getY());
         cell.setNextTimeStatus(0);
@@ -52,6 +69,13 @@ public class Dieu {
         }
     }
 
+    /**
+     *
+     * Cette fonction va à partir d'une position d'une cellule déterminer le nombre de cellules voisine vivante qu'elle a.
+     * @param i
+     * @param j
+     * @return nombre de cellule voisine vivante
+     */
     public int getNbvoisinesVivanteDe(int i,int j){
         int cpt=0;
         for(int x=i-1;x<=i+1;x++){
@@ -69,6 +93,10 @@ public class Dieu {
         return cpt;
     }
 
+    /**
+     * Itere sur toutes les cellules à traiter et donne à chaque cellule sa nouvelle forme grâce à update
+     * à chaque fois qu'une cellule est traité elle est donc supprimé de la liste traité
+     */
     public void updateCells() {
         Iterator<Cellule> it = traite.iterator();
         Cellule cellule;
