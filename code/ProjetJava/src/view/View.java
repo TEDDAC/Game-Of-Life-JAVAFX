@@ -67,11 +67,25 @@ public class View implements Initializable {
         this.regles = stub.configRules();
         presetsRules.getItems().setAll(regles.keySet());
 
+
+        hauteurSpinner.valueProperty().addListener((caller,oldValue,newValue) ->{
+            Dieu.monde.generer();
+            createGrid(plateau);
+        });
+        Dieu.monde.tailleYProperty().bind(hauteurSpinner.valueProperty());
+
+
+        largeurSpinner.valueProperty().addListener((caller,oldValue,newValue) ->{
+            Dieu.monde.generer();
+            createGrid(plateau);
+        });
+        Dieu.monde.tailleXProperty().bind(largeurSpinner.valueProperty());
     }
 
     public void switchRules(){
         Dieu.rules.switchRulesTo(this.regles.get(presetsRules.getValue()));
     }
+
     public void switchMonde(){
         Stub stub =new Stub();
         HashMap<String,Monde> Dico = stub.Config();
@@ -106,6 +120,7 @@ public class View implements Initializable {
     }
 
     public void createGrid(GridPane plateau){
+        plateau.getChildren().clear();
         CheckBox box;
         for (int i=0;i<Dieu.monde.getTailleX();i++){
             for (int j=0;j<Dieu.monde.getTailleY();j++){

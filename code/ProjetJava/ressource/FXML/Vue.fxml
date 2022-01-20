@@ -57,7 +57,7 @@
           <ListView fx:id="TypeDeMonde" onMouseClicked="#switchMonde"/>
       </children>
    </VBox>
-    <GridPane fx:id="plateau" styleClass="checkbox:selected { -fx-background-color: black;}" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+    <GridPane fx:id="plateau" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
         
     </GridPane>
 
