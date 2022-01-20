@@ -60,13 +60,7 @@ public class View implements Initializable {
             box.selectedProperty().bindBidirectional(Dieu.rules.surviveRulesProperty(i));
             surviveChildren.add(box);
         }
-        for (int i=0;i<Dieu.monde.getTailleX();i++){
-            for (int j=0;j<Dieu.monde.getTailleY();j++){
-                box = new CheckBox();
-                box.selectedProperty().bindBidirectional(Dieu.monde.getGrille()[i][j].aliveProperty());
-                plateau.add(box,i,j);
-            }
-        }
+        createGrid(plateau);
 
         sliderTime.valueProperty().bindBidirectional(BoucleDeJeu.timeProperty());
 
@@ -97,14 +91,7 @@ public class View implements Initializable {
                 System.out.println("Achim Flammenkamp");
                 break;
         }
-        for (int i=0;i<Dieu.monde.getTailleX();i++){
-            for (int j=0;j<Dieu.monde.getTailleY();j++){
-                box = new CheckBox();
-                box.selectedProperty().bindBidirectional(Dieu.monde.getGrille()[i][j].aliveProperty());
-                plateau.add(box,i,j);
-            }
-        }
-
+        createGrid(plateau);
     }
 
     public void switchPlay(){
@@ -113,5 +100,16 @@ public class View implements Initializable {
         } else
             playPauseButton.setText("Pause");
         BoucleDeJeu.setPlayed(!BoucleDeJeu.getPlayed());
+    }
+
+    public void createGrid(GridPane plateau){
+        CheckBox box;
+        for (int i=0;i<Dieu.monde.getTailleX();i++){
+            for (int j=0;j<Dieu.monde.getTailleY();j++){
+                box = new CheckBox();
+                box.selectedProperty().bindBidirectional(Dieu.monde.getGrille()[i][j].aliveProperty());
+                plateau.add(box,i,j);
+            }
+        }
     }
 }

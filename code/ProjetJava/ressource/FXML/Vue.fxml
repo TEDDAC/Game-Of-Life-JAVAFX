@@ -38,7 +38,7 @@
          </HBox>
           <HBox>
               <Text text="Vitesse: " />
-              <Slider fx:id="sliderTime" blockIncrement="10" max="1000" min="50" />
+              <Slider fx:id="sliderTime" blockIncrement="10" max="1000" min="50" rotate="180"/>
           </HBox>
           <HBox>
               <VBox>
@@ -50,8 +50,9 @@
                   <Spinner fx:id="largeurSpinner" initialValue="30" max="1000" min="3" editable="true"/>
               </VBox>
           </HBox>
+          <ComboBox/>
           <Button fx:id="playPauseButton" onAction="#switchPlay" text="Play" />
-              <ListView fx:id="TypeDeMonde" onMouseClicked="#switchMonde"/>
+          <ListView fx:id="TypeDeMonde" onMouseClicked="#switchMonde"/>
       </children>
    </VBox>
     <GridPane fx:id="plateau" styleClass="checkbox:selected { -fx-background-color: black;}" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
