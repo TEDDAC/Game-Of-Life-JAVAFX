@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modele.BoucleDeJeu;
+import modele.Cellule;
 import modele.Dieu;
 import modele.Monde;
 
@@ -20,11 +21,9 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) throws Exception {
         Stub stub = new Stub();
 
-        HashMap<String,Monde> CollectionMonde= new HashMap<String,Monde>();
-
         Dieu dieu = stub.Base();
-        CollectionMonde = stub.Config();
-        dieu.setMonde(CollectionMonde.get("Glider"));
+        HashMap<String, Cellule[][]> CollectionMonde = stub.Config();
+        dieu.monde.setGrille(CollectionMonde.get("Glider"));
         //instanciation des vues
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/Vue.fxml")); //relatif à /ressource
 
