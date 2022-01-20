@@ -3,6 +3,8 @@ package test;
 
 import modele.*;
 import test.Afficheur;
+
+import java.awt.*;
 import java.util.Arrays;
 import java.lang.Thread;
 

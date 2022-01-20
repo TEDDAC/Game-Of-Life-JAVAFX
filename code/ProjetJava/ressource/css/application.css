@@ -14,13 +14,6 @@
 .button:hover {
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
-.check-box .box {
-
--fx-background-color: white;
--fx-border-color:grey;
--fx-border-radius:3px;
-
-}
 
 .check-box .box {
 
